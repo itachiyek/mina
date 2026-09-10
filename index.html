@@ -1,86 +1,73 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mina Café · Speisekarte</title>
-<meta name="description" content="Die Speisekarte vom Mina Café Wolfsburg: Açaí Bowls, Croffel, Mini Pancakes, Matcha, Signature Lattes & mehr.">
-<meta name="theme-color" content="#E9DECB">
-<meta property="og:title" content="Mina Café · Speisekarte">
-<meta property="og:description" content="Açaí Bowls, Croffel, Matcha & Signature Lattes – frisch in Wolfsburg.">
-<meta property="og:type" content="website">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mina Café · Menü</title>
+  <meta name="description" content="Die Speisekarte vom Mina Café Wolfsburg: Açaí Bowls, Croffel, Mini Pancakes, Matcha, Signature Lattes und mehr.">
+  <meta name="theme-color" content="#17352d">
+  <meta property="og:title" content="Mina Café · Speisekarte">
+  <meta property="og:description" content="Açaí Bowls, Croffel, Matcha und Signature Lattes – frisch in Wolfsburg.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="leaf-bg" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Mina Café Startseite">mina<span>café</span></a>
+    <nav class="header-links" aria-label="Schnellzugriff">
+      <a href="#menu">Menü</a>
+      <a href="https://www.instagram.com/minacafe.wob/" target="_blank" rel="noopener">Instagram ↗</a>
+    </nav>
+  </header>
 
-<nav class="topbar">
-  <a class="brand" href="#top" aria-label="Mina Café">
-    <img class="brand__logo" src="logo.svg" alt="Mina Café" width="96" height="60">
-  </a>
-  <a class="ig-pill" href="https://www.instagram.com/minacafe.wob/" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
-    <span>@minacafe.wob</span>
-  </a>
-</nav>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro__copy">
+        <p class="overline">Wolfsburg · täglich frisch</p>
+        <h1 id="page-title">Good food.<br><em>Better mood.</em></h1>
+        <p class="intro__text">Açaí, Croffel, Matcha und Kaffee. Schnell finden, aussuchen und an der Theke bestellen.</p>
+        <a class="intro__link" href="#menu">Speisekarte ansehen <span>↓</span></a>
+      </div>
+      <figure class="intro__visual">
+        <img src="images/mina-bowl.jpg" alt="Frische Açaí Bowl mit Beeren und Granola" width="1200" height="1800">
+        <figcaption>Mina Bowl · 10,90 €</figcaption>
+      </figure>
+    </section>
 
-<!-- ===== HERO ===== -->
-<header class="hero" id="top">
-  <img class="hero__logo" src="logo.svg" alt="Mina Café" width="320" height="200">
-  <p class="eyebrow">Wolfsburg · Açaí · Matcha · Coffee</p>
-  <h1 class="hero__title">Açaí, but make it <em>special.</em></h1>
-  <p class="rule-text">Speisekarte</p>
-  <p class="hero__sub">Frisch pürierte Açaí Bowls, knusprige Croffel und Lattes, die du fotografierst, bevor du sie trinkst.</p>
-  <div class="hero__cta">
-    <a class="btn btn--primary" href="#bowls">Zur Karte
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>
-    </a>
-    <a class="btn btn--ghost" href="https://www.instagram.com/minacafe.wob/" target="_blank" rel="noopener">Instagram</a>
-  </div>
+    <section class="photo-strip" aria-label="Auswahl aus unserer Karte">
+      <figure><img src="images/bueno-bowl.jpg" alt="Bueno Bowl" width="1200" height="1200" loading="lazy"><figcaption>Bueno Bowl</figcaption></figure>
+      <figure><img src="images/pistachio-dream.jpg" alt="Pistachio Dream Croffel" width="1200" height="1200" loading="lazy"><figcaption>Pistachio Dream</figcaption></figure>
+      <figure><img src="images/avo-feta.jpg" alt="Avo Feta Frühstück" width="1200" height="1200" loading="lazy"><figcaption>Avo Feta</figcaption></figure>
+    </section>
 
-  <a class="hero__art" href="#bowls" aria-label="Zu den Açaí Bowls"><img src="images/mina-bowl.jpg" alt="Mina Bowl" width="1200" height="1200"></a>
-</header>
+    <section class="menu-shell" id="menu" aria-label="Speisekarte">
+      <aside class="menu-sidebar">
+        <p class="overline">Unsere Karte</p>
+        <h2>Was darf’s sein?</h2>
+        <nav class="category-nav" id="catnav" aria-label="Menükategorien"></nav>
+      </aside>
+      <div class="menu-content" id="menu-content"></div>
+    </section>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span>Açaí Bowls</span><span>✦</span><span>Croffel</span><span>✦</span><span>Iced Matcha</span><span>✦</span><span>Pistachio Latte</span><span>✦</span><span>Mini Pancakes</span><span>✦</span><span>San Sebastian</span><span>✦</span><span>Avo Feta</span><span>✦</span>
-    <span>Açaí Bowls</span><span>✦</span><span>Croffel</span><span>✦</span><span>Iced Matcha</span><span>✦</span><span>Pistachio Latte</span><span>✦</span><span>Mini Pancakes</span><span>✦</span><span>San Sebastian</span><span>✦</span><span>Avo Feta</span><span>✦</span>
-  </div>
-</div>
+    <section class="visit">
+      <p class="overline">Mina Café · Wolfsburg</p>
+      <h2>Wir machen deinen<br><em>Liebling frisch.</em></h2>
+      <a href="https://www.instagram.com/minacafe.wob/" target="_blank" rel="noopener">@minacafe.wob ↗</a>
+    </section>
+  </main>
 
-<!-- ===== STICKY CATEGORY NAV ===== -->
-<nav class="catnav" id="catnav" aria-label="Kategorien">
-  <div class="catnav__scroll" id="catnav-scroll"></div>
-</nav>
+  <footer class="site-footer">
+    <p>Alle Preise in Euro inkl. MwSt.</p>
+    <p>Allergene und Zusatzstoffe erfährst du an der Theke.</p>
+    <a href="#top">Nach oben ↑</a>
+  </footer>
 
-<!-- ===== MENU ===== -->
-<main class="menu" id="menu"></main>
-
-<!-- ===== SOCIAL CTA ===== -->
-<section class="social">
-  <div class="social__card">
-    <p class="social__kicker">Zeig uns deine Bowl</p>
-    <h2 class="social__title">Tag uns auf Instagram <span class="nowrap">@minacafe.wob</span></h2>
-    <p class="social__text">Die schönsten Bowls landen in unserer Story. Versprochen.</p>
-    <div class="social__actions">
-      <a class="btn btn--primary" href="https://www.instagram.com/minacafe.wob/" target="_blank" rel="noopener">Zum Profil</a>
-      <button class="btn btn--ghost" id="share-btn" type="button" hidden>Karte teilen</button>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <p><strong>Mina Café</strong> · Wolfsburg</p>
-  <p class="footer__note">Alle Preise in Euro inkl. MwSt. Allergene &amp; Zusatzstoffe erfährst du an der Theke.</p>
-  <a class="footer__top" href="#top">↑ nach oben</a>
-</footer>
-
-<script src="menu.js"></script>
-<script src="app.js"></script>
+  <script src="menu.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

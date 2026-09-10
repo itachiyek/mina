@@ -4,7 +4,6 @@ window.MINA_MENU = {
     {
       id: "bowls",
       label: "Açaí Bowls",
-      emoji: "🫐",
       title: "Açaí Bowls",
       kicker: "Unser Signature",
       intro: "Eiskalte Açaí-Basis, frisch püriert, mit Toppings, die knacken. Das, wofür ihr herkommt.",
@@ -27,7 +26,6 @@ window.MINA_MENU = {
     {
       id: "croffel",
       label: "Croffel",
-      emoji: "🥐",
       title: "Croffel",
       kicker: "Croissant × Waffel",
       intro: "Außen karamellisiert-knusprig, innen buttrig-weich. Frisch aus dem Waffeleisen.",
@@ -43,7 +41,6 @@ window.MINA_MENU = {
     {
       id: "pancakes",
       label: "Mini Pancakes",
-      emoji: "🥞",
       title: "Mini Pancakes",
       kicker: "10 Stück",
       intro: "Fluffige Mini-Pancakes, großzügig getoppt. Zum Teilen gedacht – wird aber selten geteilt.",
@@ -59,7 +56,6 @@ window.MINA_MENU = {
     {
       id: "food",
       label: "Food & Breakfast",
-      emoji: "🥑",
       title: "Food & Breakfast",
       kicker: "Herzhaft",
       intro: "Für alle, die es lieber deftig mögen.",
@@ -72,7 +68,6 @@ window.MINA_MENU = {
     {
       id: "kuchen",
       label: "Kuchen",
-      emoji: "🍰",
       title: "Kuchen",
       kicker: "Pro Stück",
       intro: "Täglich frisch. Wenn's weg ist, ist es weg.",
@@ -87,7 +82,6 @@ window.MINA_MENU = {
     {
       id: "signature",
       label: "Mina Signature",
-      emoji: "☕",
       title: "Mina Signature",
       kicker: "Hot / Iced",
       intro: "Unsere eigenen Kreationen. Heiß oder auf Eis – du entscheidest.",
@@ -102,7 +96,6 @@ window.MINA_MENU = {
     {
       id: "matcha",
       label: "Matcha",
-      emoji: "🍵",
       title: "Matcha",
       kicker: "Hot / Iced",
       intro: "Fresh, fruity & pure. Mit Milch deiner Wahl – heiß oder auf Eis.",
@@ -118,7 +111,6 @@ window.MINA_MENU = {
     {
       id: "coffee",
       label: "Coffee & Tee",
-      emoji: "🫘",
       title: "Coffee & more",
       kicker: "Classics",
       intro: "Sirup +0,50 €: Vanilla · Caramel · Salted Caramel · Hazelnut",
@@ -139,7 +131,6 @@ window.MINA_MENU = {
     {
       id: "smoothies",
       label: "Smoothies",
-      emoji: "🥤",
       title: "Smoothies",
       kicker: "Frisch gemixt",
       intro: "Nur Frucht, Haferdrink und gute Laune.",
@@ -155,7 +146,6 @@ window.MINA_MENU = {
     {
       id: "softdrinks",
       label: "Softdrinks",
-      emoji: "🧊",
       title: "Softdrinks",
       kicker: "Eiskalt",
       intro: "",

@@ -1,22 +1,19 @@
-# Fotos einbinden
+# Fotos
 
-Lege hier Fotos ab und trage den Dateinamen in `menu.js` beim jeweiligen Gericht als `image` ein, z. B.
+Gerichte mit einem `image`-Feld in `menu.js` bekommen eine Foto-Karte, alle anderen erscheinen als Textzeile.
 
 ```js
-{ name: "Mina Bowl", price: 10.9, image: "mina-bowl.jpg", ... }
+{ name: "Mina Bowl", image: "mina-bowl.jpg", price: 10.9, ... }
 ```
 
-Das Foto ersetzt dann die Illustration der Karte. Vorschlag für Dateinamen:
+Aktuell eingebundene Fotos (Platzhalter von Unsplash, Unsplash-Lizenz, frei nutzbar):
 
-| Gericht            | Datei                     |
-|--------------------|---------------------------|
-| Mina Bowl          | `mina-bowl.jpg`           |
-| Tropical Bowl      | `tropical-bowl.jpg`       |
-| Bueno Bowl         | `bueno-bowl.jpg`          |
-| Peanut Butter Bowl | `peanut-butter-bowl.jpg`  |
-| Pistachio Dream    | `pistachio-dream.jpg`     |
-| Avo Feta           | `avo-feta.jpg`            |
-| Strawberry Matcha  | `strawberry-matcha.jpg`   |
-| White Mocha        | `white-mocha.jpg`         |
+| Datei                  | Gericht          | Quelle / Fotograf:in                                        |
+|------------------------|------------------|-------------------------------------------------------------|
+| `mina-bowl.jpg`        | Mina Bowl + Hero | unsplash.com/photos/opJ-TlLYu4Q · Abdelrahman Sarayreh      |
+| `bueno-bowl.jpg`       | Bueno Bowl       | unsplash.com/photos/NI8MeJiAN3I · Eiliv Aceron              |
+| `pistachio-dream.jpg`  | Pistachio Dream  | unsplash.com/photos/yGMlOsO4rM0 · Habib Eskandari           |
+| `avo-feta.jpg`         | Avo Feta         | unsplash.com/photos/UtTlp2OuVPI · Fernanda Martinez         |
 
-Empfehlung: quadratisch oder 4:3, ca. 1200 px breit, als JPG (< 300 KB).
+Eigene Fotos: einfach die Datei gleichen Namens ersetzen. Empfehlung: 4:3 oder 3:2, ca. 1200 px breit, JPG < 300 KB.
+Das Hero-Bild oben auf der Seite wird rund beschnitten und nutzt ebenfalls `mina-bowl.jpg`.

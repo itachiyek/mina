@@ -8,15 +8,14 @@ window.MINA_MENU = {
       title: "Açaí Bowls",
       kicker: "Unser Signature",
       intro: "Eiskalte Açaí-Basis, frisch püriert, mit Toppings, die knacken. Das, wofür ihr herkommt.",
-      layout: "feature",
       items: [
-        { name: "Mina Bowl", price: 10.9, badge: "Signature", tone: "berry", art: "bowl", tagline: "Açaí, but make it special.",
+        { name: "Mina Bowl", image: "mina-bowl.jpg", price: 10.9, badge: "Signature", tagline: "Açaí, but make it special.",
           desc: ["Açaí", "Erdbeeren", "Himbeeren", "Heidelbeeren", "Granola", "Pistaziencreme"] },
-        { name: "Tropical Bowl", price: 10.9, badge: "Sunny", tone: "mango", art: "bowl",
+        { name: "Tropical Bowl", price: 10.9, badge: "Sunny",
           desc: ["Açaí", "Mango & Maracuja Mix", "Kokoschips", "Granola", "White Chocolate Drizzle"] },
-        { name: "Bueno Bowl", price: 11.9, badge: "Fan Favorite", tone: "choco", art: "bowl",
+        { name: "Bueno Bowl", image: "bueno-bowl.jpg", price: 11.9, badge: "Fan Favorite",
           desc: ["Açaí", "Banane", "Erdbeeren", "Bueno Creme", "Schoko Drops", "Bueno Crunch"] },
-        { name: "Peanut Butter Bowl", price: 11.9, badge: "Protein Vibes", tone: "peanut", art: "bowl",
+        { name: "Peanut Butter Bowl", price: 11.9, badge: "Protein Vibes",
           desc: ["Açaí", "Banane", "Erdbeeren", "Peanut Butter", "Granola"] }
       ],
       extras: [
@@ -32,13 +31,12 @@ window.MINA_MENU = {
       title: "Croffel",
       kicker: "Croissant × Waffel",
       intro: "Außen karamellisiert-knusprig, innen buttrig-weich. Frisch aus dem Waffeleisen.",
-      layout: "list",
       items: [
-        { name: "Pistachio Dream", price: 6.9, badge: "Hype", tone: "pistachio", art: "croffle",
+        { name: "Pistachio Dream", image: "pistachio-dream.jpg", price: 6.9, badge: "Hype",
           desc: ["Pistaziencreme", "gehackte Pistazien", "Puderzucker", "White Chocolate Drizzle"] },
-        { name: "Chocolate Lover", price: 6.7, tone: "choco", art: "croffle",
+        { name: "Chocolate Lover", price: 6.7,
           desc: ["Nutella", "Erdbeeren", "Bananen", "Puderzucker", "Chocolate Drops"] },
-        { name: "Lotus Crunch", price: 6.7, tone: "lotus", art: "croffle",
+        { name: "Lotus Crunch", price: 6.7,
           desc: ["Lotuscreme", "Lotus Crumble", "White Chocolate Drizzle"] }
       ]
     },
@@ -49,13 +47,12 @@ window.MINA_MENU = {
       title: "Mini Pancakes",
       kicker: "10 Stück",
       intro: "Fluffige Mini-Pancakes, großzügig getoppt. Zum Teilen gedacht – wird aber selten geteilt.",
-      layout: "list",
       items: [
-        { name: "Berry Cloud", price: 6.7, tone: "berry", art: "pancakes",
+        { name: "Berry Cloud", price: 6.7,
           desc: ["Erdbeeren", "Heidelbeeren", "weiße & Vollmilchschokolade", "Puderzucker"] },
-        { name: "Bueno Bites", price: 6.9, badge: "Fan Favorite", tone: "choco", art: "pancakes",
+        { name: "Bueno Bites", price: 6.9, badge: "Fan Favorite",
           desc: ["Haselnusscreme", "Bananen", "Bueno Crunch", "Schoko Drops"] },
-        { name: "Cookies & Cream", price: 6.9, tone: "oreo", art: "pancakes",
+        { name: "Cookies & Cream", price: 6.9,
           desc: ["Oreo Crumble", "weiße & Vollmilchschokolade"] }
       ]
     },
@@ -66,11 +63,10 @@ window.MINA_MENU = {
       title: "Food & Breakfast",
       kicker: "Herzhaft",
       intro: "Für alle, die es lieber deftig mögen.",
-      layout: "list",
       items: [
-        { name: "Avo Feta", price: 8.9, badge: "Signature", art: "toast", tagline: "Happiness served on toast.",
+        { name: "Avo Feta", image: "avo-feta.jpg", price: 8.9, badge: "Signature", tagline: "Happiness served on toast.",
           desc: ["cremige Avocado", "Feta", "Kirschtomaten", "Rucola", "Oliven", "Kürbiskerne", "Olivenöl", "Zitrone"] },
-        { name: "Chicken Pesto", price: 9.5, art: "toast", tone: "pesto", desc: ["Hähnchenbrust", "Frischkäse", "Pesto", "Cherrytomaten", "Rucola"] }
+        { name: "Chicken Pesto", price: 9.5, desc: ["Hähnchenbrust", "Frischkäse", "Pesto", "Cherrytomaten", "Rucola"] }
       ]
     },
     {
@@ -80,7 +76,6 @@ window.MINA_MENU = {
       title: "Kuchen",
       kicker: "Pro Stück",
       intro: "Täglich frisch. Wenn's weg ist, ist es weg.",
-      layout: "list",
       items: [
         { name: "San Sebastian Cheesecake", price: 4.9, badge: "Must-Try",
           desc: ["Topping nach Wahl +1,00 €: Pistachio · Lotus · White Chocolate · Hazelnut · Erdbeersauce"] },
@@ -96,13 +91,12 @@ window.MINA_MENU = {
       title: "Mina Signature",
       kicker: "Hot / Iced",
       intro: "Unsere eigenen Kreationen. Heiß oder auf Eis – du entscheidest.",
-      layout: "list",
       items: [
-        { name: "Spanish Latte", price: 5.2, badge: "Bestseller", art: "coffee", tone: "spanish", desc: [] },
-        { name: "White Mocha", price: 5.2, art: "coffee", tone: "mocha", desc: ["x vanilla cold foam"] },
-        { name: "Salted Caramel Latte", price: 5.5, art: "coffee", tone: "caramel", desc: [] },
-        { name: "Lotus Latte", price: 5.5, badge: "Hype", art: "coffee", tone: "lotus", desc: [] },
-        { name: "Pistachio Latte", price: 5.7, art: "coffee", tone: "pistachio", desc: [] }
+        { name: "Spanish Latte", price: 5.2, badge: "Bestseller", desc: [] },
+        { name: "White Mocha", price: 5.2, desc: ["x vanilla cold foam"] },
+        { name: "Salted Caramel Latte", price: 5.5, desc: [] },
+        { name: "Lotus Latte", price: 5.5, badge: "Hype", desc: [] },
+        { name: "Pistachio Latte", price: 5.7, desc: [] }
       ]
     },
     {
@@ -112,14 +106,13 @@ window.MINA_MENU = {
       title: "Matcha",
       kicker: "Hot / Iced",
       intro: "Fresh, fruity & pure. Mit Milch deiner Wahl – heiß oder auf Eis.",
-      layout: "list",
       items: [
-        { name: "Matcha Classic", price: 5.2, art: "matcha", tone: "classic", desc: [] },
-        { name: "Strawberry Matcha", price: 5.5, badge: "Hype", art: "matcha", tone: "berry", desc: ["Erdbeerpüree"] },
-        { name: "Mango Matcha", price: 5.5, art: "matcha", tone: "mango", desc: ["Mangopüree"] },
-        { name: "Blueberry Coconut Matcha", price: 5.7, art: "matcha", tone: "blueberry", desc: [] },
-        { name: "White Chocolate Raspberry Matcha", price: 5.7, art: "matcha", tone: "raspberry", desc: [] },
-        { name: "White Chocolate Pistachio Matcha", price: 5.7, art: "matcha", tone: "pistachio", desc: [] }
+        { name: "Matcha Classic", price: 5.2, desc: [] },
+        { name: "Strawberry Matcha", price: 5.5, badge: "Hype", desc: ["Erdbeerpüree"] },
+        { name: "Mango Matcha", price: 5.5, desc: ["Mangopüree"] },
+        { name: "Blueberry Coconut Matcha", price: 5.7, desc: [] },
+        { name: "White Chocolate Raspberry Matcha", price: 5.7, desc: [] },
+        { name: "White Chocolate Pistachio Matcha", price: 5.7, desc: [] }
       ]
     },
     {
@@ -129,7 +122,6 @@ window.MINA_MENU = {
       title: "Coffee & more",
       kicker: "Classics",
       intro: "Sirup +0,50 €: Vanilla · Caramel · Salted Caramel · Hazelnut",
-      layout: "list",
       items: [
         { name: "Espresso", price: 2.5, desc: [] },
         { name: "Espresso Doppio", price: 3.5, desc: [] },
@@ -151,13 +143,12 @@ window.MINA_MENU = {
       title: "Smoothies",
       kicker: "Frisch gemixt",
       intro: "Nur Frucht, Haferdrink und gute Laune.",
-      layout: "list",
       items: [
-        { name: "Berry Smoothie", price: 5.7, tone: "berry", art: "smoothie",
+        { name: "Berry Smoothie", price: 5.7,
           desc: ["Erdbeere", "Himbeere", "Heidelbeere", "Banane", "Haferdrink"] },
-        { name: "Tropical", price: 5.7, tone: "mango", art: "smoothie",
+        { name: "Tropical", price: 5.7,
           desc: ["Mango", "Maracuja", "Banane", "Haferdrink"] },
-        { name: "Green Goddess", price: 5.9, badge: "Glow", tone: "pistachio", art: "smoothie",
+        { name: "Green Goddess", price: 5.9, badge: "Glow",
           desc: ["Avocado", "Banane", "Mango", "Spinat", "Honig", "Haferdrink"] }
       ]
     },
@@ -168,7 +159,6 @@ window.MINA_MENU = {
       title: "Softdrinks",
       kicker: "Eiskalt",
       intro: "",
-      layout: "list",
       items: [
         { name: "Wasser", price: 3.2, desc: ["still / sprudel · 0,25 l"] },
         { name: "Wasser", price: 6.9, desc: ["still / sprudel · 0,75 l"] },

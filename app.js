@@ -54,7 +54,23 @@
 
   const links = [...nav.querySelectorAll("a")];
   const sections = [...menu.querySelectorAll(".menu-section")];
-  const setActive = (id) => links.forEach((link) => link.classList.toggle("is-active", link.dataset.target === id));
+  let activeId = "";
+  const setActive = (id) => {
+    if (id === activeId) return;
+    activeId = id;
+    links.forEach((link) => {
+      const isActive = link.dataset.target === id;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+      if (isActive && window.matchMedia("(max-width: 900px)").matches) {
+        nav.scrollTo({
+          left: link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2,
+          behavior: "smooth"
+        });
+      }
+    });
+  };
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {

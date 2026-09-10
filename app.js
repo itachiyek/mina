@@ -21,21 +21,21 @@
 
   function extrasHTML(groups) {
     if (!groups?.length) return "";
-    return `<div class="extras">${groups.map((group) => `
-      <article class="extra">
-        <div><h3>${esc(group.title)}</h3><p>${group.options.map(esc).join(" · ")}</p></div>
-        <strong>${group.title === "Tee" ? money(group.price) : "+ " + money(group.price)}</strong>
+    return `<div class="menu-list menu-list--extras">${groups.map((group) => `
+      <article class="menu-item">
+        <div class="menu-item__main">
+          <h3>${esc(group.title)}</h3>
+          <p class="menu-item__description">${group.options.map(esc).join(" · ")}</p>
+        </div>
+        <p class="menu-item__price">${group.title === "Tee" ? money(group.price) : "+ " + money(group.price)}</p>
       </article>`).join("")}</div>`;
   }
 
-  function sectionHTML(category, index) {
+  function sectionHTML(category) {
     return `<section class="menu-section" id="${esc(category.id)}" data-category="${esc(category.id)}">
       <header class="menu-section__header">
-        <span>${String(index + 1).padStart(2, "0")}</span>
-        <div>
-          <p>${esc(category.kicker || "")}</p>
-          <h2>${esc(category.title)}</h2>
-        </div>
+        <p>${esc(category.kicker || "")}</p>
+        <h2>${esc(category.title)}</h2>
       </header>
       ${category.intro ? `<p class="menu-section__intro">${esc(category.intro)}</p>` : ""}
       <div class="menu-list">${category.items.map(itemHTML).join("")}</div>
@@ -49,10 +49,8 @@
   const nav = document.getElementById("catnav");
 
   menu.innerHTML = categories.map(sectionHTML).join("");
-  nav.innerHTML = categories.map((category, index) => `
-    <a href="#${esc(category.id)}" data-target="${esc(category.id)}">
-      <span>${String(index + 1).padStart(2, "0")}</span>${esc(category.label)}
-    </a>`).join("");
+  nav.innerHTML = categories.map((category) => `
+    <a href="#${esc(category.id)}" data-target="${esc(category.id)}">${esc(category.label)}</a>`).join("");
 
   const links = [...nav.querySelectorAll("a")];
   const sections = [...menu.querySelectorAll(".menu-section")];

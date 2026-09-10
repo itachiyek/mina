@@ -49,8 +49,11 @@
   const nav = document.getElementById("catnav");
 
   menu.innerHTML = categories.map(sectionHTML).join("");
-  nav.innerHTML = categories.map((category) => `
-    <a href="#${esc(category.id)}" data-target="${esc(category.id)}">${esc(category.label)}</a>`).join("");
+  nav.innerHTML = categories.map((category, index) => `
+    <a href="#${esc(category.id)}" data-target="${esc(category.id)}">
+      <span class="category-nav__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+      <span class="category-nav__label">${esc(category.label)}</span>
+    </a>`).join("");
 
   const links = [...nav.querySelectorAll("a")];
   const sections = [...menu.querySelectorAll(".menu-section")];

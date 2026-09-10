@@ -72,15 +72,48 @@
     });
   };
 
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-      if (visible[0]) setActive(visible[0].target.id);
-    }, { rootMargin: "-18% 0px -64%", threshold: [0, 0.1, 0.3] });
-    sections.forEach((section) => observer.observe(section));
-  }
+  const markerPosition = () => window.matchMedia("(max-width: 900px)").matches ? 146 : window.innerHeight * 0.28;
+  let scrollFrame = 0;
+  let lockedTarget = "";
+  let unlockTimer = 0;
 
-  links.forEach((link) => link.addEventListener("click", () => setActive(link.dataset.target)));
+  const updateActiveFromScroll = () => {
+    scrollFrame = 0;
+    const marker = markerPosition();
+    if (lockedTarget) {
+      const target = document.getElementById(lockedTarget);
+      if (target && Math.abs(target.getBoundingClientRect().top - marker) > 28 && window.scrollY + window.innerHeight < document.documentElement.scrollHeight - 2) return;
+      lockedTarget = "";
+    }
+
+    let current = sections[0];
+    sections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= marker) current = section;
+    });
+    setActive(current.id);
+  };
+
+  const scheduleActiveUpdate = () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateActiveFromScroll);
+  };
+
+  links.forEach((link) => link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const id = link.dataset.target;
+    const target = document.getElementById(id);
+    if (!target) return;
+    lockedTarget = id;
+    setActive(id);
+    target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    history.replaceState(null, "", `#${id}`);
+    window.clearTimeout(unlockTimer);
+    unlockTimer = window.setTimeout(() => {
+      lockedTarget = "";
+      scheduleActiveUpdate();
+    }, 1100);
+  }));
+
+  window.addEventListener("scroll", scheduleActiveUpdate, { passive: true });
+  window.addEventListener("resize", scheduleActiveUpdate);
   setActive(categories[0].id);
 })();

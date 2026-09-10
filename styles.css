@@ -112,29 +112,10 @@ button { font: inherit; }
 .btn--ghost { border-color: rgba(78,90,56,.45); color: var(--olive); background: transparent; }
 .btn--ghost:hover { background: rgba(78,90,56,.08); transform: translateY(-2px); }
 
-/* hero showcase strip (3 cards) */
-.showcase {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-  max-width: 1100px; margin: clamp(30px, 6vw, 56px) auto 0;
-}
-.showcase__card {
-  position: relative; border-radius: var(--radius); overflow: hidden;
-  background: linear-gradient(180deg, var(--beige-3), var(--beige-2));
-  box-shadow: var(--shadow);
-  display: grid; grid-template-rows: auto auto; align-content: space-between; gap: 6px;
-  padding: 18px 16px 12px; text-align: center;
-  transform: translateY(0); transition: transform .35s ease;
-}
-.showcase__card:hover { transform: translateY(-6px); }
-.showcase__card .kicker { font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: var(--olive-2); }
-.showcase__card .name {
-  margin: 4px 0 0; font-family: var(--serif); font-size: clamp(18px, 2.6vw, 30px); line-height: 1.05; color: var(--olive);
-  text-transform: uppercase; letter-spacing: .02em; font-weight: 500;
-}
-.showcase__card .art { height: clamp(96px, 20vw, 230px); display: flex; align-items: flex-end; justify-content: center; }
-.showcase__card .art svg { height: 100%; width: auto; max-width: 100%; filter: drop-shadow(0 14px 14px rgba(59,69,43,.22)); }
-.showcase__card:nth-child(2) { transform: translateY(-10px); }
-.showcase__card:nth-child(2):hover { transform: translateY(-16px); }
+/* hero illustration */
+.hero__art { display: block; width: min(260px, 52vw); margin: clamp(28px, 5vw, 48px) auto 0; transition: transform .35s ease; }
+.hero__art:hover { transform: translateY(-6px); }
+.hero__art svg { width: 100%; height: auto; filter: drop-shadow(0 22px 22px rgba(59,69,43,.25)); }
 
 /* ticker */
 .ticker {
@@ -240,7 +221,7 @@ button { font: inherit; }
 }
 
 /* list layout */
-.list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 40px; }
+.list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; max-width: 1000px; margin: 0 auto; }
 .row {
   display: grid; grid-template-columns: 1fr auto; gap: 4px 14px; align-items: baseline;
   padding: 16px 0; border-bottom: 1px solid rgba(78,90,56,.18);
@@ -310,11 +291,6 @@ button { font: inherit; }
   .card--sm .price { font-size: 16px; }
   .card--sm .ingredients li { font-size: 10px; padding: 4px 7px; }
   .card--sm .card__art { padding: 14px 14px 2px; }
-  .showcase { gap: 8px; }
-  .showcase__card { padding: 12px 8px 8px; border-radius: 16px; }
-  .showcase__card .kicker { font-size: 8px; letter-spacing: .22em; }
-  .showcase__card .art { height: 104px; }
-  .showcase__card .name { font-size: 15px; }
   .catnav { top: 53px; }
   .section { scroll-margin-top: 110px; }
   .ig-pill span { display: none; }

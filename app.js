@@ -285,19 +285,9 @@
   menu.innerHTML = data.categories.map(sectionHTML).join("");
   nav.innerHTML = data.categories.map(c => `<a class="chip" href="#${c.id}" data-target="${c.id}"><span>${c.emoji}</span>${esc(c.label)}</a>`).join("");
 
-  /* showcase (hero) */
-  const show = document.getElementById("showcase");
-  if (show) {
-    const picks = [
-      { kicker: "Our Signature", name: "Mina Bowl", art: "bowl", tone: "berry" },
-      { kicker: "Our Matcha", name: "Iced Matcha", art: "matcha", tone: "berry" },
-      { kicker: "Our Coffee", name: "Iced White Mocha", art: "coffee", tone: "mocha" }
-    ];
-    show.innerHTML = picks.map(p => `<a class="showcase__card" href="#${p.art === "bowl" ? "bowls" : p.art === "matcha" ? "matcha" : "signature"}">
-      <div><p class="kicker">${p.kicker}</p><h3 class="name">${p.name}</h3></div>
-      <div class="art">${ART[p.art](tone(p.tone), p.tone)}</div>
-    </a>`).join("");
-  }
+  /* hero illustration (Mina Bowl) */
+  const heroArt = document.getElementById("hero-art");
+  if (heroArt) heroArt.innerHTML = bowl(tone("berry"));
 
   /* reveal cards */
   const cards = document.querySelectorAll(".card");

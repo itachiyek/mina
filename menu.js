@@ -32,7 +32,7 @@ window.MINA_MENU = {
       title: "Croffel",
       kicker: "Croissant × Waffel",
       intro: "Außen karamellisiert-knusprig, innen buttrig-weich. Frisch aus dem Waffeleisen.",
-      layout: "cards",
+      layout: "list",
       items: [
         { name: "Pistachio Dream", price: 6.9, badge: "Hype", tone: "pistachio", art: "croffle",
           desc: ["Pistaziencreme", "gehackte Pistazien", "Puderzucker", "White Chocolate Drizzle"] },
@@ -49,7 +49,7 @@ window.MINA_MENU = {
       title: "Mini Pancakes",
       kicker: "10 Stück",
       intro: "Fluffige Mini-Pancakes, großzügig getoppt. Zum Teilen gedacht – wird aber selten geteilt.",
-      layout: "cards",
+      layout: "list",
       items: [
         { name: "Berry Cloud", price: 6.7, tone: "berry", art: "pancakes",
           desc: ["Erdbeeren", "Heidelbeeren", "weiße & Vollmilchschokolade", "Puderzucker"] },
@@ -96,13 +96,13 @@ window.MINA_MENU = {
       title: "Mina Signature",
       kicker: "Hot / Iced",
       intro: "Unsere eigenen Kreationen. Heiß oder auf Eis – du entscheidest.",
-      layout: "cards",
+      layout: "list",
       items: [
-        { name: "Spanish Latte", price: 5.2, badge: "Bestseller", art: "coffee", tone: "spanish", desc: ["hot / iced"] },
-        { name: "White Mocha", price: 5.2, art: "coffee", tone: "mocha", tagline: "x vanilla cold foam", desc: ["hot / iced"] },
-        { name: "Salted Caramel Latte", price: 5.5, art: "coffee", tone: "caramel", desc: ["hot / iced"] },
-        { name: "Lotus Latte", price: 5.5, badge: "Hype", art: "coffee", tone: "lotus", desc: ["hot / iced"] },
-        { name: "Pistachio Latte", price: 5.7, art: "coffee", tone: "pistachio", desc: ["hot / iced"] }
+        { name: "Spanish Latte", price: 5.2, badge: "Bestseller", art: "coffee", tone: "spanish", desc: [] },
+        { name: "White Mocha", price: 5.2, art: "coffee", tone: "mocha", desc: ["x vanilla cold foam"] },
+        { name: "Salted Caramel Latte", price: 5.5, art: "coffee", tone: "caramel", desc: [] },
+        { name: "Lotus Latte", price: 5.5, badge: "Hype", art: "coffee", tone: "lotus", desc: [] },
+        { name: "Pistachio Latte", price: 5.7, art: "coffee", tone: "pistachio", desc: [] }
       ]
     },
     {
@@ -111,15 +111,15 @@ window.MINA_MENU = {
       emoji: "🍵",
       title: "Matcha",
       kicker: "Hot / Iced",
-      intro: "Fresh, fruity & pure. Mit Milch deiner Wahl.",
-      layout: "cards",
+      intro: "Fresh, fruity & pure. Mit Milch deiner Wahl – heiß oder auf Eis.",
+      layout: "list",
       items: [
-        { name: "Matcha Classic", price: 5.2, art: "matcha", tone: "classic", desc: ["Matcha", "Milch deiner Wahl", "hot / iced"] },
-        { name: "Strawberry Matcha", price: 5.5, badge: "Hype", art: "matcha", tone: "berry", desc: ["Matcha", "Milch deiner Wahl", "Erdbeerpüree"] },
-        { name: "Mango Matcha", price: 5.5, art: "matcha", tone: "mango", desc: ["Matcha", "Milch deiner Wahl", "Mangopüree"] },
-        { name: "Blueberry Coconut Matcha", price: 5.7, art: "matcha", tone: "blueberry", desc: ["Matcha", "Milch deiner Wahl", "hot / iced"] },
-        { name: "White Chocolate Raspberry Matcha", price: 5.7, art: "matcha", tone: "raspberry", desc: ["Matcha", "Milch deiner Wahl", "hot / iced"] },
-        { name: "White Chocolate Pistachio Matcha", price: 5.7, art: "matcha", tone: "pistachio", desc: ["Matcha", "Milch deiner Wahl", "hot / iced"] }
+        { name: "Matcha Classic", price: 5.2, art: "matcha", tone: "classic", desc: [] },
+        { name: "Strawberry Matcha", price: 5.5, badge: "Hype", art: "matcha", tone: "berry", desc: ["Erdbeerpüree"] },
+        { name: "Mango Matcha", price: 5.5, art: "matcha", tone: "mango", desc: ["Mangopüree"] },
+        { name: "Blueberry Coconut Matcha", price: 5.7, art: "matcha", tone: "blueberry", desc: [] },
+        { name: "White Chocolate Raspberry Matcha", price: 5.7, art: "matcha", tone: "raspberry", desc: [] },
+        { name: "White Chocolate Pistachio Matcha", price: 5.7, art: "matcha", tone: "pistachio", desc: [] }
       ]
     },
     {
@@ -151,7 +151,7 @@ window.MINA_MENU = {
       title: "Smoothies",
       kicker: "Frisch gemixt",
       intro: "Nur Frucht, Haferdrink und gute Laune.",
-      layout: "cards",
+      layout: "list",
       items: [
         { name: "Berry Smoothie", price: 5.7, tone: "berry", art: "smoothie",
           desc: ["Erdbeere", "Himbeere", "Heidelbeere", "Banane", "Haferdrink"] },

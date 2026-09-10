@@ -1,13 +1,13 @@
 :root {
-  --forest: #3a241c;
-  --forest-deep: #271712;
-  --cream: #f4ede3;
-  --paper: #fff9f1;
-  --orange: #ae3e59;
-  --lime: #b7c87a;
-  --ink: #291e1a;
-  --muted: #766a62;
-  --line: rgba(49, 32, 25, .15);
+  --forest: #676047;
+  --forest-deep: #46422f;
+  --cream: #eee4d6;
+  --paper: #faf5ed;
+  --orange: #a66d2c;
+  --lime: #d8c79f;
+  --ink: #494633;
+  --muted: #746e5b;
+  --line: rgba(73, 70, 51, .16);
   --display: "Fraunces", Georgia, serif;
   --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --page: min(1440px, calc(100% - 48px));
@@ -25,8 +25,8 @@ figure, h1, h2, h3, p { margin: 0; }
   display: flex; align-items: center; justify-content: space-between;
   border-bottom: 1px solid var(--line);
 }
-.wordmark { font: 500 2.2rem/1 var(--display); letter-spacing: -.065em; }
-.wordmark span { margin-left: .16em; color: var(--orange); font-style: italic; }
+.wordmark { display: inline-flex; align-items: center; height: 100%; }
+.wordmark img { width: auto; height: 66px; object-fit: contain; }
 .header-links { display: flex; gap: clamp(22px, 4vw, 56px); font-size: .82rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .header-links a { transition: color .2s; }
 .header-links a:hover { color: var(--orange); }
@@ -46,7 +46,7 @@ figure, h1, h2, h3, p { margin: 0; }
 .intro__link span { color: var(--orange); font-size: 1.4em; }
 .intro__visual { position: relative; height: min(72vh, 760px); min-height: 520px; overflow: hidden; border-radius: 240px 240px 20px 20px; background: var(--forest); }
 .intro__visual img { height: 100%; object-fit: cover; object-position: 50% 68%; }
-.intro__visual figcaption { position: absolute; inset: auto 0 0; display: grid; grid-template-columns: 1fr auto; gap: 2px 18px; padding: 18px 24px; background: rgba(39, 23, 18, .94); color: var(--paper); }
+.intro__visual figcaption { position: absolute; inset: auto 0 0; display: grid; grid-template-columns: 1fr auto; gap: 2px 18px; padding: 18px 24px; background: rgba(70, 66, 47, .94); color: var(--paper); }
 .intro__visual figcaption span { grid-column: 1 / -1; color: var(--lime); font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .intro__visual figcaption strong { font-size: .98rem; }
 .intro__visual figcaption b { font: 400 1.22rem var(--display); }
@@ -96,7 +96,7 @@ figure, h1, h2, h3, p { margin: 0; }
   :root { --page: min(100% - 32px, 760px); }
   .site-header {
     position: fixed; inset: 0 0 auto; z-index: 60;
-    width: 100%; padding-inline: 16px; background: rgba(244,237,227,.97);
+    width: 100%; padding-inline: 16px; background: rgba(238,228,214,.97);
     -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   }
   .intro { grid-template-columns: 1fr; padding-top: 174px; }
@@ -109,8 +109,8 @@ figure, h1, h2, h3, p { margin: 0; }
     position: fixed; inset: 82px 0 auto; z-index: 50;
     display: flex; gap: 8px; overflow-x: auto;
     margin: 0; padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
-    border-bottom: 1px solid rgba(255,255,255,.16); background: rgba(39,23,18,.97);
-    box-shadow: 0 8px 30px rgba(39,23,18,.18); scrollbar-width: none; scroll-padding-inline: 16px;
+    border-bottom: 1px solid rgba(255,255,255,.16); background: rgba(70,66,47,.97);
+    box-shadow: 0 8px 30px rgba(70,66,47,.18); scrollbar-width: none; scroll-padding-inline: 16px;
     -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   }
   .category-nav::-webkit-scrollbar { display: none; }
@@ -122,13 +122,13 @@ figure, h1, h2, h3, p { margin: 0; }
 
 @media (max-width: 620px) {
   body { background: var(--cream); font-family: var(--sans); }
-  .site-header { height: 64px; padding-inline: 18px; background: rgba(244,237,227,.94); }
-  .wordmark { font-size: 2rem; }
+  .site-header { height: 64px; padding-inline: 18px; background: rgba(238,228,214,.95); }
+  .wordmark img { height: 54px; }
   .header-menu-link { display: none; }
   .header-links { gap: 0; font-size: .72rem; letter-spacing: .04em; }
   .instagram-link { gap: 6px; }
   .instagram-link svg { width: 18px; height: 18px; }
-  .category-nav { top: 64px; gap: 6px; padding: 9px 16px; background: rgba(39,23,18,.95); }
+  .category-nav { top: 64px; gap: 6px; padding: 9px 16px; background: rgba(70,66,47,.96); }
   .category-nav a { min-height: 38px; padding: 8px 13px; font-size: .8rem; letter-spacing: -.01em; }
   .category-nav a:hover, .category-nav a.is-active { padding-left: 13px; }
   .intro, .photo-strip { display: none; }

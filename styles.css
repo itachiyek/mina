@@ -42,16 +42,22 @@ figure, h1, h2, h3, p { margin: 0; }
 .intro__text { max-width: 470px; margin-top: 40px; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.18rem); }
 .intro__link { display: inline-flex; align-items: center; gap: 24px; margin-top: 32px; padding-bottom: 8px; border-bottom: 1px solid currentColor; font-weight: 600; }
 .intro__link span { color: var(--orange); font-size: 1.4em; }
-.intro__visual { position: relative; height: min(72vh, 760px); min-height: 520px; overflow: hidden; border-radius: 240px 240px 20px 20px; background: #ddd; }
+.intro__visual { position: relative; height: min(72vh, 760px); min-height: 520px; overflow: hidden; border-radius: 240px 240px 20px 20px; background: var(--forest); }
 .intro__visual img { height: 100%; object-fit: cover; object-position: 50% 68%; }
-.intro__visual figcaption { position: absolute; right: 18px; bottom: 18px; padding: 10px 15px; background: var(--paper); border-radius: 99px; font-size: .78rem; font-weight: 600; }
+.intro__visual figcaption { position: absolute; inset: auto 0 0; display: grid; grid-template-columns: 1fr auto; gap: 2px 18px; padding: 18px 24px; background: rgba(15, 38, 32, .94); color: var(--paper); }
+.intro__visual figcaption span { grid-column: 1 / -1; color: var(--lime); font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.intro__visual figcaption strong { font-size: .98rem; }
+.intro__visual figcaption b { font: 400 1.22rem var(--display); }
 
-.photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--forest); }
-.photo-strip figure { position: relative; height: clamp(250px, 33vw, 520px); overflow: hidden; }
-.photo-strip figure + figure { border-left: 1px solid rgba(255,255,255,.3); }
-.photo-strip img { height: 100%; object-fit: cover; filter: saturate(.9); transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .3s; }
+.photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--forest); color: var(--paper); }
+.photo-strip figure { min-width: 0; overflow: hidden; }
+.photo-strip figure + figure { border-left: 1px solid rgba(255,255,255,.18); }
+.photo-strip img { height: clamp(240px, 29vw, 460px); object-fit: cover; filter: saturate(.9); transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .3s; }
 .photo-strip figure:hover img { transform: scale(1.035); filter: saturate(1.05); }
-.photo-strip figcaption { position: absolute; left: 18px; bottom: 18px; padding: 8px 12px; color: var(--paper); border: 1px solid rgba(255,255,255,.65); border-radius: 99px; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(8px); }
+.photo-strip figcaption { display: grid; grid-template-columns: 1fr auto; gap: 2px 18px; min-height: 98px; padding: 18px clamp(18px, 2.2vw, 32px) 20px; border-top: 1px solid rgba(255,255,255,.18); }
+.photo-strip figcaption span { grid-column: 1 / -1; color: var(--lime); font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.photo-strip figcaption strong { font-size: 1rem; }
+.photo-strip figcaption b { color: var(--paper); font: 400 1.25rem var(--display); white-space: nowrap; }
 
 .menu-shell { display: grid; grid-template-columns: minmax(220px, .7fr) minmax(0, 2.3fr); gap: clamp(44px, 6vw, 88px); width: var(--page); margin: auto; padding: 112px 0 80px; }
 .menu-sidebar { align-self: start; position: sticky; top: 40px; }
@@ -106,9 +112,9 @@ figure, h1, h2, h3, p { margin: 0; }
   .intro__copy { padding: 0; }
   .intro__text { margin-top: 28px; }
   .intro__visual { height: 62vh; min-height: 420px; }
-  .photo-strip { grid-template-columns: 1fr 1fr; }
-  .photo-strip figure { height: 56vw; }
-  .photo-strip figure:last-child { display: none; }
+  .photo-strip { grid-template-columns: 1fr; }
+  .photo-strip figure + figure { border-left: 0; border-top: 1px solid rgba(255,255,255,.18); }
+  .photo-strip img { height: 78vw; max-height: 460px; }
   .menu-section { padding-bottom: 72px; }
   .menu-section__header h2 { font-size: clamp(2.7rem, 14vw, 4.2rem); }
   .menu-section__intro { margin-left: 0; }

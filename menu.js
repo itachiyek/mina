@@ -122,10 +122,8 @@ window.MINA_MENU = {
         { name: "Latte Macchiato", price: 4.5, desc: [] },
         { name: "Hot Chocolate", price: 4.7, desc: [] },
         { name: "White Hot Chocolate", price: 4.8, desc: [] },
-        { name: "Babyccino", price: 2.2, desc: ["für die Kleinen"] }
-      ],
-      sub: [
-        { title: "Tee", price: 3.7, options: ["Schwarztee", "Grüner Tee", "Pfefferminztee", "Früchtetee"] }
+        { name: "Babyccino", price: 2.2, desc: ["für die Kleinen"] },
+        { name: "Tee", price: 3.7, desc: ["Schwarztee", "Grüner Tee", "Pfefferminztee", "Früchtetee"] }
       ]
     },
     {

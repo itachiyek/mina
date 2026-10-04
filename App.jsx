@@ -10,6 +10,16 @@ const money = new Intl.NumberFormat("de-DE", {
   currency: "EUR",
 });
 const instagram = "https://www.instagram.com/minacafe.wob/";
+const revealViewport = {
+  once: true,
+  amount: 0.15,
+  margin: "0px 0px -12px 0px",
+};
+const revealVisible = { opacity: 1, transform: "translate3d(0, 0, 0)" };
+const revealHeaderStart = { opacity: 0, transform: "translate3d(0, 12px, 0)" };
+const revealItemStart = { opacity: 0, transform: "translate3d(0, 8px, 0)" };
+const revealTransition = { duration: 0.36, ease: [0.22, 1, 0.36, 1] };
+const revealInstant = { duration: 0 };
 const categoryNotes = {
   bowls: "Fruchtig & frisch",
   croffel: "Knusprig & warm",
@@ -364,9 +374,16 @@ function MobileDrawer({
   );
 }
 
-function MenuItem({ item }) {
+function MenuItem({ item, reduceMotion }) {
   return (
-    <article className="menu-item">
+    <motion.article
+      className="menu-item"
+      initial={reduceMotion ? false : revealItemStart}
+      animate={reduceMotion ? revealVisible : undefined}
+      whileInView={reduceMotion ? undefined : revealVisible}
+      viewport={revealViewport}
+      transition={reduceMotion ? revealInstant : revealTransition}
+    >
       <div className="menu-item__copy">
         <div className="menu-item__heading">
           <h3>{item.name}</h3>
@@ -379,7 +396,7 @@ function MenuItem({ item }) {
         {!!item.desc?.length && <p>{item.desc.join(" · ")}</p>}
       </div>
       <span className="menu-item__price">{money.format(item.price)}</span>
-    </article>
+    </motion.article>
   );
 }
 
@@ -432,13 +449,21 @@ function Extras({ groups, id }) {
 }
 
 const MenuSection = React.memo(function MenuSection({ category, index }) {
+  const reduceMotion = useReducedMotion();
   return (
     <section
       className="menu-section"
       id={category.id}
       aria-labelledby={`${category.id}-title`}
     >
-      <header className="section-heading">
+      <motion.header
+        className="section-heading"
+        initial={reduceMotion ? false : revealHeaderStart}
+        animate={reduceMotion ? revealVisible : undefined}
+        whileInView={reduceMotion ? undefined : revealVisible}
+        viewport={revealViewport}
+        transition={reduceMotion ? revealInstant : revealTransition}
+      >
         <div className="section-heading__title">
           <span className="section-number">
             {String(index + 1).padStart(2, "0")}
@@ -456,13 +481,17 @@ const MenuSection = React.memo(function MenuSection({ category, index }) {
           </span>
           <MenuArt category={category.id} />
         </div>
-      </header>
+        {category.intro && <p className="section-intro">{category.intro}</p>}
+      </motion.header>
       <div className="section-body">
         <div className="section-list">
-          {category.intro && <p className="section-intro">{category.intro}</p>}
           <div className="menu-items">
             {category.items.map((item, itemIndex) => (
-              <MenuItem item={item} key={`${item.name}-${itemIndex}`} />
+              <MenuItem
+                item={item}
+                reduceMotion={reduceMotion}
+                key={`${item.name}-${itemIndex}`}
+              />
             ))}
           </div>
           {category.note && (

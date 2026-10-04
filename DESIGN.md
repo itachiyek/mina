@@ -17,7 +17,7 @@ Die aktuelle Karte enthält 45 Produkte. Preise, Zutaten und Reihenfolge folgen 
 - Die aktive Kategorie wird klar hervorgehoben und begleitet die Orientierung.
 - Karte und Navigation folgen derselben Reihenfolge: Açaí Bowls, Coffee & Tea, Mina Signatur, Matcha, Smoothies, Softdrinks, Croffel, Pancakes, Bread & Breakfast, Kuchen.
 - Produktnamen und Preise sind direkt lesbar; Beschreibungen stehen darunter.
-- Die neu vorgegebenen Kategoriebeschreibungen stehen kompakt unter der Überschrift, hervorgehoben durch einen hellen Sandton und eine feine Bronzelinie.
+- Kategorienüberschrift, Illustration und Beschreibung bilden eine gemeinsame getönte Fläche. Die Beschreibung steht kompakt direkt unter der Titelzeile.
 - Ergänzende Informationen und Extras werden kompakt zugänglich gemacht.
 - Großzügige Touch-Flächen und ein klarer Schließen-Button erleichtern die Bedienung.
 - Der Drawer unterstützt Tastatur, Escape, Fokusbegrenzung und Fokus-Rückgabe.
@@ -51,6 +51,7 @@ Die gelieferten Produktposts dienen weiterhin als Referenz für Farben und Marke
 ## Bewegung und Zugänglichkeit
 
 Framer Motion animiert Drawer, aktive Desktop-Kategorie und Extras mit kurzen, sanften Übergängen.
+Kategorienflächen und Produktzeilen blenden beim ersten Eintritt in den sichtbaren Bereich sanft ein. Die kurze Bewegung nutzt nur Opazität und vollständige Transform-Werte; die Sektionen selbst bleiben für Navigation und Scrollposition unverändert. Bei reduzierter Bewegung erscheinen die Inhalte sofort.
 Der mobile Drawer gleitet ohne Federbewegung von rechts; die Abdunklung blendet separat ein.
 Die vollständig animierte Transform-Eigenschaft nutzt native Browseranimationen über Framer Motion.
 Das Panel bleibt montiert, um erneuten DOM-Aufbau beim Öffnen zu vermeiden; die Karte rendert dabei nicht erneut.
@@ -74,6 +75,7 @@ Die Karte passt sich schmalen Displays an und vermeidet horizontales Scrollen de
 - [W3C: Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) und [Kontrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) – mobile Lesbarkeit.
 - [Motion: Accessibility](https://motion.dev/docs/react-accessibility) – Reduced Motion in Framer Motion berücksichtigen.
 - [Motion: Performance](https://motion.dev/docs/performance) – vollständige Transform-Eigenschaft und native Animationen.
+- [Motion: Scroll Animations](https://motion.dev/docs/react-scroll-animations) – einmalige Einblendungen mit `whileInView` und gemeinsamem Intersection Observer.
 - [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) – Scroll-Begrenzung für Maus und Touch bei bestehendem Dokumentfluss.
 - [WebKit: Viewport Units](https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/) – dynamische Höhe bei beweglichen mobilen Browserleisten.
 

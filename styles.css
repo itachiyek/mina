@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--sans);
   color: #424a32;
   background: #f8f5ee;
   font-synthesis: none;
@@ -13,6 +13,7 @@
   --muted: #666a57;
   --bronze: #85633b;
   --line: #dad8ca;
+  --sans: "Manrope", sans-serif;
   --serif: "Cormorant Garamond", Georgia, serif;
 }
 
@@ -140,8 +141,9 @@ h2:focus {
   margin: 0 12px 20px;
   padding-top: 21px;
   border-top: 1px solid var(--line);
-  font-family: var(--serif);
-  font-size: 20px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
 }
 .tiny-sun {
   font-size: 23px;
@@ -242,12 +244,16 @@ h2:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 .section-heading__title {
   display: flex;
   align-items: center;
   gap: 17px;
+  min-width: 0;
+}
+.section-heading__title > div {
+  min-width: 0;
 }
 .section-number {
   align-self: stretch;
@@ -255,8 +261,10 @@ h2:focus {
   align-items: center;
   border-right: 1px solid var(--line);
   padding-right: 16px;
-  font-family: var(--serif);
-  font-size: 30px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
   color: #7e816c;
 }
 .section-heading .eyebrow {
@@ -266,11 +274,11 @@ h2:focus {
   margin-bottom: 2px;
 }
 .section-heading h2 {
-  font-family: var(--serif);
-  font-size: 43px;
-  font-weight: 500;
-  letter-spacing: -0.7px;
-  line-height: 1;
+  font-family: var(--sans);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 1.25;
 }
 .section-heading__note {
   font-size: 8px;
@@ -284,16 +292,6 @@ h2:focus {
 .section-list {
   min-width: 0;
   width: 100%;
-}
-.section-intro {
-  font-size: 13px;
-  line-height: 1.8;
-  color: var(--muted);
-  max-width: 660px;
-  margin-bottom: 14px;
-}
-.section-intro:empty {
-  display: none;
 }
 .menu-item {
   display: flex;
@@ -515,14 +513,14 @@ h2:focus {
     padding: 76px 32px 0;
   }
   .mobile-header {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     position: fixed;
     z-index: 20;
     top: 0;
     left: 0;
     right: 0;
     align-items: center;
-    justify-content: space-between;
     height: 76px;
     padding: 8px 32px;
     border-bottom: 1px solid var(--line);
@@ -530,9 +528,12 @@ h2:focus {
     backdrop-filter: blur(16px);
   }
   .brand--compact {
+    grid-column: 2;
     width: 85px;
   }
   .mobile-menu-button {
+    grid-column: 3;
+    justify-self: end;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -611,9 +612,11 @@ h2:focus {
     margin: 26px 0 7px;
   }
   .drawer h2 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 34px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: -0.8px;
+    line-height: 1.3;
     margin-bottom: 25px;
   }
   .drawer .nav-group__label {
@@ -664,14 +667,14 @@ h2:focus {
     padding: 26px 0 30px;
   }
   .section-heading {
-    margin-bottom: 16px;
+    margin-bottom: 6px;
     gap: 12px;
   }
   .section-heading__title {
     gap: 12px;
   }
   .section-number {
-    font-size: 26px;
+    font-size: 11px;
     padding-right: 12px;
   }
   .section-heading .eyebrow {
@@ -680,15 +683,11 @@ h2:focus {
     margin-bottom: 3px;
   }
   .section-heading h2 {
-    font-size: 35px;
-    letter-spacing: -0.9px;
+    font-size: 26px;
+    letter-spacing: -0.8px;
   }
   .section-heading__note {
     display: none;
-  }
-  .section-intro {
-    font-size: 12px;
-    margin-bottom: 3px;
   }
   .menu-item {
     padding: 17px 0;
@@ -762,7 +761,7 @@ h2:focus {
     padding-right: 17px;
   }
   .section-heading h2 {
-    font-size: 31px;
+    font-size: 23px;
   }
   .drawer {
     padding-left: 18px;

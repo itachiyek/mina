@@ -415,7 +415,6 @@ function MenuSection({ category, index }) {
       </header>
       <div className="section-body">
         <div className="section-list">
-          <p className="section-intro">{category.intro}</p>
           <div className="menu-items">
             {category.items.map((item, itemIndex) => (
               <MenuItem item={item} key={`${item.name}-${itemIndex}`} />

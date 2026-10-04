@@ -1,11 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useIsPresent,
-  useReducedMotion,
-} from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { RemoveScroll } from "react-remove-scroll";
 import { menu } from "./menu.js";
+import MenuArt from "./MenuArt.jsx";
 
 const categories = menu.categories;
 const money = new Intl.NumberFormat("de-DE", {
@@ -202,29 +199,41 @@ function Sidebar({ active, onNavigate }) {
   );
 }
 
-function DrawerPanel({ onClose, active, onNavigate, backgroundRef }) {
+const drawerHidden = "translate3d(100%, 0, 0)";
+const drawerVisible = "translate3d(0%, 0, 0)";
+
+function MobileDrawer({
+  open,
+  onClose,
+  onAfterClose,
+  active,
+  onNavigate,
+  backgroundRef,
+}) {
   const dialogRef = useRef(null);
+  const openRef = useRef(open);
+  const closeFrame = useRef(0);
+  const closingComplete = useRef(false);
+  const [present, setPresent] = useState(false);
   const reduceMotion = useReducedMotion();
-  const isPresent = useIsPresent();
   useLayoutEffect(() => {
+    openRef.current = open;
+    if (open) {
+      closingComplete.current = false;
+      setPresent(true);
+    }
+  }, [open]);
+  useEffect(() => () => cancelAnimationFrame(closeFrame.current), []);
+
+  useLayoutEffect(() => {
+    if (!present) return;
     const background = backgroundRef.current;
-    const body = document.body;
-    const scrollY = window.scrollY;
-    const styleKeys = ["position", "top", "left", "right", "overflow"];
-    const previousStyles = Object.fromEntries(
-      styleKeys.map((key) => [key, body.style[key]]),
-    );
-    // Keep the page still on touch devices, including iOS, for the entire exit.
-    Object.assign(body.style, {
-      position: "fixed",
-      top: `-${scrollY}px`,
-      left: "0",
-      right: "0",
-      overflow: "hidden",
-    });
+    const root = document.documentElement;
+    const previousLock = root.getAttribute("data-menu-open");
+    // Keep the tall document in flow so mobile browser toolbars stay stable.
+    root.setAttribute("data-menu-open", "true");
     if (background) background.inert = true;
     const dialog = dialogRef.current;
-    dialog?.querySelector("button")?.focus({ preventScroll: true });
     const handleKey = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
@@ -236,7 +245,10 @@ function DrawerPanel({ onClose, active, onNavigate, backgroundRef }) {
       ];
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
+      if (!dialog.contains(document.activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus({ preventScroll: true });
+      } else if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
         last.focus({ preventScroll: true });
       } else if (!event.shiftKey && document.activeElement === last) {
@@ -250,93 +262,105 @@ function DrawerPanel({ onClose, active, onNavigate, backgroundRef }) {
     document.addEventListener("keydown", handleKey);
     window.addEventListener("resize", handleResize);
     return () => {
-      Object.assign(body.style, previousStyles);
+      if (previousLock === null) root.removeAttribute("data-menu-open");
+      else root.setAttribute("data-menu-open", previousLock);
       if (background) background.inert = false;
       document.removeEventListener("keydown", handleKey);
       window.removeEventListener("resize", handleResize);
-      window.scrollTo({ top: scrollY, behavior: "instant" });
     };
-  }, [onClose, backgroundRef]);
+  }, [present, onClose, backgroundRef]);
+
+  function finishAnimation(definition) {
+    if (definition.transform === drawerVisible && openRef.current) {
+      dialogRef.current
+        ?.querySelector("button")
+        ?.focus({ preventScroll: true });
+    }
+    if (
+      definition.transform !== drawerHidden ||
+      openRef.current ||
+      !present ||
+      closingComplete.current
+    )
+      return;
+    closingComplete.current = true;
+    setPresent(false);
+    // React releases the lock before the queued category navigation runs.
+    closeFrame.current = requestAnimationFrame(onAfterClose);
+  }
 
   return (
-    <motion.div
-      className="drawer-layer"
-      data-state={isPresent ? "open" : "closing"}
+    <RemoveScroll
+      enabled={present}
+      removeScrollBar={false}
+      allowPinchZoom
+      forwardProps
     >
-      <motion.div
-        className="drawer-backdrop"
-        aria-hidden="true"
-        onClick={onClose}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.22 }}
-      />
-      <motion.div
-        id="mobile-navigation"
-        className="drawer"
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="drawer-title"
-        initial={{ x: reduceMotion ? 0 : "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: reduceMotion ? 0 : "100%" }}
-        transition={{
-          type: "tween",
-          duration: reduceMotion ? 0 : 0.3,
-          ease: [0.22, 1, 0.36, 1],
-        }}
+      <div
+        className="drawer-layer"
+        data-state={present ? (open ? "open" : "closing") : "closed"}
+        inert={!present ? true : undefined}
+        aria-hidden={!present ? true : undefined}
       >
-        <div className="drawer__top">
-          <Logo onTop={() => onNavigate("top")} />
-          <motion.button
-            type="button"
-            className="icon-button"
-            aria-label="Navigation schließen"
-            onClick={onClose}
-            whileTap={{ scale: 0.92 }}
-          >
-            <Icon name="close" />
-          </motion.button>
-        </div>
-        <p className="drawer__eyebrow">Mina Café · Wolfsburg</p>
-        <h2 id="drawer-title">Was darf’s sein?</h2>
-        <CategoryNavigation active={active} onNavigate={onNavigate} mobile />
-        <div className="drawer__bottom">
-          <p>
-            Such dir deinen Lieblingsmoment aus.
-            <br />
-            Wir freuen uns auf deine Bestellung an der Theke.
-          </p>
-          <a
-            className="social-link"
-            href={instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="instagram" size={17} />
-            @minacafe.wob
-            <Icon name="external" size={13} />
-          </a>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-function MobileDrawer({ open, onAfterClose, ...props }) {
-  const closeFrame = useRef(0);
-  useEffect(() => () => cancelAnimationFrame(closeFrame.current), []);
-  return (
-    <AnimatePresence
-      onExitComplete={() => {
-        // The next frame follows React's unmount and scroll-lock cleanup.
-        closeFrame.current = requestAnimationFrame(onAfterClose);
-      }}
-    >
-      {open && <DrawerPanel key="navigation-drawer" {...props} />}
-    </AnimatePresence>
+        <motion.div
+          className="drawer-backdrop"
+          aria-hidden="true"
+          onClick={onClose}
+          initial={false}
+          animate={{ opacity: open ? 1 : 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.24 }}
+        />
+        <motion.div
+          id="mobile-navigation"
+          className="drawer"
+          ref={dialogRef}
+          role="dialog"
+          aria-modal={present ? true : undefined}
+          aria-labelledby="drawer-title"
+          initial={false}
+          animate={{ transform: open ? drawerVisible : drawerHidden }}
+          onAnimationComplete={finishAnimation}
+          transition={{
+            type: "tween",
+            duration: reduceMotion ? 0 : 0.28,
+            ease: [0.32, 0.72, 0, 1],
+          }}
+        >
+          <div className="drawer__top">
+            <Logo onTop={() => onNavigate("top")} />
+            <motion.button
+              type="button"
+              className="icon-button"
+              aria-label="Navigation schließen"
+              onClick={onClose}
+              whileTap={{ scale: 0.92 }}
+            >
+              <Icon name="close" />
+            </motion.button>
+          </div>
+          <p className="drawer__eyebrow">Mina Café · Wolfsburg</p>
+          <h2 id="drawer-title">Was darf’s sein?</h2>
+          <CategoryNavigation active={active} onNavigate={onNavigate} mobile />
+          <div className="drawer__bottom">
+            <p>
+              Such dir deinen Lieblingsmoment aus.
+              <br />
+              Wir freuen uns auf deine Bestellung an der Theke.
+            </p>
+            <a
+              className="social-link"
+              href={instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="instagram" size={17} />
+              @minacafe.wob
+              <Icon name="external" size={13} />
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </RemoveScroll>
   );
 }
 
@@ -407,7 +431,7 @@ function Extras({ groups, id }) {
   );
 }
 
-function MenuSection({ category, index }) {
+const MenuSection = React.memo(function MenuSection({ category, index }) {
   return (
     <section
       className="menu-section"
@@ -426,9 +450,12 @@ function MenuSection({ category, index }) {
             </h2>
           </div>
         </div>
-        <span className="section-heading__note">
-          {categoryNotes[category.id]}
-        </span>
+        <div className="section-heading__detail">
+          <span className="section-heading__note">
+            {categoryNotes[category.id]}
+          </span>
+          <MenuArt category={category.id} />
+        </div>
       </header>
       <div className="section-body">
         <div className="section-list">
@@ -449,7 +476,7 @@ function MenuSection({ category, index }) {
       {category.extras && <Extras groups={category.extras} id={category.id} />}
     </section>
   );
-}
+});
 
 export default function App() {
   const [active, setActive] = useState(categories[0].id);
@@ -469,40 +496,46 @@ export default function App() {
     setDrawerOpen(true);
   }
 
-  function scrollToCategory(id) {
-    const target = document.getElementById(id);
-    if (!target) return;
-    const isCategory = categories.some((category) => category.id === id);
-    navigationLock.current = {
-      id: isCategory ? id : "",
-      until: performance.now() + (reduceMotion ? 0 : 1200),
-    };
-    setActive(isCategory ? id : categories[0].id);
-    if (window.location.hash !== `#${id}`)
-      history.pushState(null, "", `#${id}`);
-    requestAnimationFrame(() =>
-      requestAnimationFrame(() => {
-        target.scrollIntoView({
-          behavior: reduceMotion ? "instant" : "smooth",
-          block: "start",
-        });
-        target
-          .querySelector(isCategory ? "h2" : "h1")
-          ?.focus({ preventScroll: true });
-      }),
-    );
-  }
+  const scrollToCategory = React.useCallback(
+    (id) => {
+      const target = document.getElementById(id);
+      if (!target) return;
+      const isCategory = categories.some((category) => category.id === id);
+      navigationLock.current = {
+        id: isCategory ? id : "",
+        until: performance.now() + (reduceMotion ? 0 : 1200),
+      };
+      setActive(isCategory ? id : categories[0].id);
+      if (window.location.hash !== `#${id}`)
+        history.pushState(null, "", `#${id}`);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          target.scrollIntoView({
+            behavior: reduceMotion ? "instant" : "smooth",
+            block: "start",
+          });
+          target
+            .querySelector(isCategory ? "h2" : "h1")
+            ?.focus({ preventScroll: true });
+        }),
+      );
+    },
+    [reduceMotion],
+  );
 
-  function navigate(id) {
-    if (drawerPresent.current) {
-      pendingNavigation.current = id;
-      setDrawerOpen(false);
-      return;
-    }
-    scrollToCategory(id);
-  }
+  const navigate = React.useCallback(
+    (id) => {
+      if (drawerPresent.current) {
+        pendingNavigation.current = id;
+        setDrawerOpen(false);
+        return;
+      }
+      scrollToCategory(id);
+    },
+    [scrollToCategory],
+  );
 
-  function finishClosing() {
+  const finishClosing = React.useCallback(() => {
     drawerPresent.current = false;
     const id = pendingNavigation.current;
     pendingNavigation.current = null;
@@ -515,7 +548,7 @@ export default function App() {
           : backgroundRef.current?.querySelector(".sidebar [aria-current]");
       opener?.focus({ preventScroll: true });
     }
-  }
+  }, [scrollToCategory]);
 
   useEffect(() => {
     let frame = 0;
@@ -523,7 +556,10 @@ export default function App() {
       frame = 0;
       if (drawerPresent.current) return;
       const marker =
-        window.innerWidth <= 600 ? 90 : window.innerWidth <= 1000 ? 96 : 130;
+        window.innerWidth <= 1000
+          ? document.querySelector(".mobile-header").getBoundingClientRect()
+              .height + 20
+          : 130;
       const lock = navigationLock.current;
       const lockedElement = document.getElementById(lock.id);
       if (

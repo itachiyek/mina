@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 :root {
+  color-scheme: light;
   font-family: var(--sans);
   color: #424a32;
   background: #f8f5ee;
@@ -9,6 +10,7 @@
   -webkit-font-smoothing: antialiased;
   --paper: #f8f5ee;
   --sand: #eee7dc;
+  --coffee-tint: #eee6da;
   --olive: #424a32;
   --muted: #666a57;
   --bronze: #85633b;
@@ -21,6 +23,7 @@
   box-sizing: border-box;
 }
 html {
+  background-color: var(--paper);
   scroll-behavior: smooth;
   scroll-padding-top: 35px;
   scrollbar-gutter: stable;
@@ -28,6 +31,12 @@ html {
 body {
   margin: 0;
   min-width: 0;
+  background-color: var(--paper);
+}
+html[data-menu-open="true"],
+html[data-menu-open="true"] body {
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 button,
 a {
@@ -111,7 +120,7 @@ h2:focus {
   flex-direction: column;
   border-left: 1px solid var(--line);
   padding: 34px 23px 22px;
-  background: #f0ede3;
+  background: #efecdf;
   overflow-y: auto;
   box-shadow: -8px 0 32px rgb(66 74 50 / 2%);
 }
@@ -221,6 +230,7 @@ h2:focus {
 .sidebar__footer {
   margin-top: auto;
   padding: 26px 12px 0;
+  border-top: 1px solid rgb(133 99 59 / 16%);
 }
 .sidebar__footer > p {
   font-family: var(--serif);
@@ -249,9 +259,59 @@ h2:focus {
   scroll-margin-top: 0;
 }
 .menu-section {
+  --section-tint: #e9ecdf;
+  --section-edge: #d7ddc8;
+  --art-fill: #d4ddba;
+  --art-halo: #f8f5ee;
+  --art-drizzle: #839058;
   padding: 32px 0 38px;
   border-top: 1px solid var(--line);
   scroll-margin-top: 32px;
+}
+#bowls {
+  --section-tint: #eee6e0;
+  --section-edge: #ddd0c8;
+  --art-fill: #d5b9b4;
+}
+#coffee {
+  --section-tint: var(--coffee-tint);
+  --section-edge: #ddcfbb;
+  --art-fill: #d9c3a3;
+}
+#matcha {
+  --section-tint: #e7ecdc;
+  --section-edge: #d1dcc1;
+  --art-fill: #cad7aa;
+}
+#smoothies {
+  --section-tint: #f0e9da;
+  --section-edge: #dfd3b9;
+  --art-fill: #e8d1a2;
+}
+#softdrinks {
+  --section-tint: #e5ebe5;
+  --section-edge: #cedbce;
+  --art-fill: #c4d5c8;
+}
+#croffel {
+  --section-tint: #f0e6d8;
+  --section-edge: #dfceba;
+  --art-fill: #dcc19c;
+}
+#pancakes {
+  --section-tint: #f0e4dc;
+  --section-edge: #decbbd;
+  --art-fill: #e2c6a8;
+}
+#food {
+  --section-tint: #e8eadc;
+  --section-edge: #d1d7bc;
+  --art-fill: #c6d1a4;
+}
+#kuchen {
+  --section-tint: #ede4df;
+  --section-edge: #ddcec5;
+  --art-fill: #dbc3b2;
 }
 .menu-section:first-child {
   border-top: 0;
@@ -261,28 +321,39 @@ h2:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  gap: 18px;
+  padding: 15px 19px;
+  margin-bottom: 15px;
+  background: var(--section-tint);
+  border: 1px solid var(--section-edge);
+  border-radius: 14px;
 }
 .section-heading__title {
   display: flex;
   align-items: center;
-  gap: 17px;
+  gap: 14px;
   min-width: 0;
+  flex: 1;
 }
 .section-heading__title > div {
   min-width: 0;
 }
 .section-number {
-  align-self: stretch;
+  align-self: center;
   display: flex;
   align-items: center;
-  border-right: 1px solid var(--line);
-  padding-right: 16px;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border: 1px solid var(--section-edge);
+  border-radius: 50%;
+  background: rgb(248 245 238 / 60%);
   font-family: var(--sans);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.5px;
-  color: #7e816c;
+  color: var(--bronze);
 }
 .section-heading .eyebrow {
   color: var(--bronze);
@@ -301,9 +372,22 @@ h2:focus {
   font-size: 8px;
   letter-spacing: 0.4px;
   color: var(--muted);
-  border: 1px solid var(--line);
+  border: 1px solid var(--section-edge);
   padding: 8px 11px;
   border-radius: 30px;
+  background: rgb(248 245 238 / 55%);
+  white-space: nowrap;
+}
+.section-heading__detail {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.menu-art {
+  width: 76px;
+  height: 76px;
+  color: #626b4c;
 }
 .section-body,
 .section-list {
@@ -312,10 +396,15 @@ h2:focus {
 }
 .section-intro {
   max-width: 660px;
-  color: var(--muted);
+  color: var(--olive);
   font-size: 12px;
+  font-weight: 500;
   line-height: 1.75;
-  margin: 6px 0 4px;
+  margin: 0 0 6px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--bronze);
+  border-radius: 0 8px 8px 0;
+  background: rgb(238 231 220 / 55%);
 }
 .menu-item {
   display: flex;
@@ -356,12 +445,13 @@ h2:focus {
   font-weight: 500;
   line-height: 1.65;
   font-variant-numeric: tabular-nums;
+  color: var(--olive);
 }
 .item-badge {
   padding: 3px 6px;
-  border: 1px solid #dedccc;
-  border-radius: 4px;
-  background: #f2f0e6;
+  border: 1px solid #ded7c3;
+  border-radius: 20px;
+  background: #f0ebdc;
   color: #596047;
   font-size: 8px;
   letter-spacing: 0.15px;
@@ -454,6 +544,7 @@ h2:focus {
 }
 .visit {
   background: #e9ebdd;
+  border: 1px solid #d1d8bf;
   padding: 48px 20px 45px;
   border-radius: 100px 100px 7px 7px;
   text-align: center;
@@ -464,6 +555,8 @@ h2:focus {
   width: 47px;
   height: 47px;
   margin-bottom: 15px;
+  padding: 4px;
+  border-bottom: 1px solid #c6ccaf;
 }
 .visit > .eyebrow {
   font-size: 8px;
@@ -546,7 +639,7 @@ h2:focus {
 
 @media (max-width: 1000px) {
   html {
-    scroll-padding-top: 96px;
+    scroll-padding-top: calc(96px + env(safe-area-inset-top, 0px));
   }
   .sidebar {
     display: none;
@@ -555,7 +648,9 @@ h2:focus {
     max-width: 820px;
     margin-right: auto;
     margin-left: auto;
-    padding: 76px 32px 0;
+    padding: calc(76px + env(safe-area-inset-top, 0px))
+      max(32px, env(safe-area-inset-right, 0px)) 0
+      max(32px, env(safe-area-inset-left, 0px));
   }
   .mobile-header {
     display: grid;
@@ -566,8 +661,10 @@ h2:focus {
     left: 0;
     right: 0;
     align-items: center;
-    height: 76px;
-    padding: 8px 32px;
+    height: calc(76px + env(safe-area-inset-top, 0px));
+    padding: calc(8px + env(safe-area-inset-top, 0px))
+      max(32px, env(safe-area-inset-right, 0px)) 8px
+      max(32px, env(safe-area-inset-left, 0px));
     border-bottom: 1px solid var(--line);
     background: var(--paper);
     box-shadow: 0 3px 14px rgb(66 74 50 / 2%);
@@ -588,11 +685,11 @@ h2:focus {
     flex-shrink: 0;
     padding: 0;
     border-radius: 50%;
-    background: var(--olive);
-    color: var(--paper);
+    background: var(--coffee-tint);
+    color: var(--olive);
     box-shadow:
-      inset 0 0 0 1px rgb(248 245 238 / 12%),
-      0 3px 9px rgb(66 74 50 / 10%);
+      inset 0 0 0 1px #ddcfbb,
+      0 3px 9px rgb(133 99 59 / 8%);
     transition:
       background 0.2s,
       box-shadow 0.2s;
@@ -602,8 +699,10 @@ h2:focus {
     height: 20px;
   }
   .mobile-menu-button:hover {
-    background: #343c27;
-    box-shadow: 0 4px 12px rgb(66 74 50 / 16%);
+    background: var(--coffee-tint);
+    box-shadow:
+      inset 0 0 0 1px #ddcfbb,
+      0 4px 12px rgb(133 99 59 / 12%);
   }
   .mobile-menu-button:focus-visible {
     outline: 2px solid var(--bronze);
@@ -618,9 +717,15 @@ h2:focus {
   .drawer-layer {
     display: block;
     position: fixed;
-    inset: 0;
+    inset: 0 0 auto;
+    height: 100vh;
+    height: 100dvh;
     z-index: 50;
     overflow: hidden;
+  }
+  .drawer-layer[data-state="closed"] {
+    visibility: hidden;
+    pointer-events: none;
   }
   .drawer-layer[data-state="closing"] .drawer {
     pointer-events: none;
@@ -630,19 +735,24 @@ h2:focus {
     inset: 0;
     background: rgb(32 37 22 / 38%);
     touch-action: none;
+    will-change: opacity;
   }
   .drawer {
     position: absolute;
     inset: 0 0 0 auto;
     width: min(360px, 90vw);
     background: var(--paper);
-    padding: 20px 23px max(22px, env(safe-area-inset-bottom));
+    padding: max(20px, env(safe-area-inset-top, 0px))
+      max(23px, env(safe-area-inset-right, 0px))
+      max(22px, env(safe-area-inset-bottom, 0px)) 23px;
     border-left: 1px solid #dedbcd;
     border-radius: 22px 0 0 22px;
-    box-shadow: -18px 0 55px rgb(24 31 17 / 15%);
+    box-shadow: -10px 0 28px rgb(24 31 17 / 12%);
     overflow-y: auto;
-    overscroll-behavior: contain;
-    touch-action: pan-y;
+    overscroll-behavior: none;
+    touch-action: pan-y pinch-zoom;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .drawer__top {
     display: flex;
@@ -712,14 +822,18 @@ h2:focus {
 
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 90px;
+    scroll-padding-top: calc(90px + env(safe-area-inset-top, 0px));
   }
   .main-content {
-    padding: 70px 22px 0;
+    padding: calc(70px + env(safe-area-inset-top, 0px))
+      max(22px, env(safe-area-inset-right, 0px)) 0
+      max(22px, env(safe-area-inset-left, 0px));
   }
   .mobile-header {
-    height: 70px;
-    padding: 8px 22px;
+    height: calc(70px + env(safe-area-inset-top, 0px));
+    padding: calc(8px + env(safe-area-inset-top, 0px))
+      max(22px, env(safe-area-inset-right, 0px)) 8px
+      max(22px, env(safe-area-inset-left, 0px));
   }
   .brand--compact {
     width: 79px;
@@ -728,15 +842,18 @@ h2:focus {
     padding: 26px 0 30px;
   }
   .section-heading {
-    margin-bottom: 6px;
-    gap: 12px;
+    margin-bottom: 13px;
+    padding: 12px 13px;
+    gap: 10px;
   }
   .section-heading__title {
-    gap: 12px;
+    gap: 10px;
   }
   .section-number {
-    font-size: 11px;
-    padding-right: 12px;
+    width: 24px;
+    height: 24px;
+    font-size: 9px;
+    padding: 0;
   }
   .section-heading .eyebrow {
     font-size: 7px;
@@ -744,11 +861,15 @@ h2:focus {
     margin-bottom: 3px;
   }
   .section-heading h2 {
-    font-size: 26px;
+    font-size: clamp(21px, 5.6vw, 26px);
     letter-spacing: -0.8px;
   }
   .section-heading__note {
     display: none;
+  }
+  .menu-art {
+    width: 54px;
+    height: 54px;
   }
   .menu-item {
     padding: 17px 0;
@@ -770,7 +891,7 @@ h2:focus {
   }
   .item-badge {
     font-size: 8px;
-    padding: 3px 5px;
+    padding: 3px 6px;
   }
   .extras {
     margin-top: 17px;
@@ -814,15 +935,30 @@ h2:focus {
 
 @media (max-width: 360px) {
   .main-content {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: max(17px, env(safe-area-inset-left, 0px));
+    padding-right: max(17px, env(safe-area-inset-right, 0px));
   }
   .mobile-header {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: max(17px, env(safe-area-inset-left, 0px));
+    padding-right: max(17px, env(safe-area-inset-right, 0px));
   }
   .section-heading h2 {
-    font-size: 23px;
+    font-size: 21px;
+  }
+  .section-heading {
+    padding: 12px 10px;
+    gap: 8px;
+  }
+  .section-heading__title {
+    gap: 8px;
+  }
+  .section-number {
+    width: 22px;
+    height: 22px;
+  }
+  .menu-art {
+    width: 47px;
+    height: 47px;
   }
   .drawer {
     padding-left: 18px;

@@ -17,7 +17,7 @@ Die aktuelle Karte enthält 45 Produkte. Preise, Zutaten und Reihenfolge folgen 
 - Die aktive Kategorie wird klar hervorgehoben und begleitet die Orientierung.
 - Karte und Navigation folgen derselben Reihenfolge: Açaí Bowls, Coffee & Tea, Mina Signatur, Matcha, Smoothies, Softdrinks, Croffel, Pancakes, Bread & Breakfast, Kuchen.
 - Produktnamen und Preise sind direkt lesbar; Beschreibungen stehen darunter.
-- Die neu vorgegebenen Kategoriebeschreibungen stehen kompakt unter der Überschrift.
+- Die neu vorgegebenen Kategoriebeschreibungen stehen kompakt unter der Überschrift, hervorgehoben durch einen hellen Sandton und eine feine Bronzelinie.
 - Ergänzende Informationen und Extras werden kompakt zugänglich gemacht.
 - Großzügige Touch-Flächen und ein klarer Schließen-Button erleichtern die Bedienung.
 - Der Drawer unterstützt Tastatur, Escape, Fokusbegrenzung und Fokus-Rückgabe.
@@ -38,6 +38,8 @@ Cormorant Garamond setzt bei den dekorativen Begrüßungstexten ruhige, markenna
 Die Fonts werden lokal gehostet; klare Hierarchien vermeiden unnötige Schriftvarianten.
 Bronze bleibt ein zurückhaltender Akzent; funktionale Texte benötigen genügend Kontrast.
 Feine Linien, ruhige Abstände und cremige Flächen verbinden Website und Instagram-Auftritt.
+Kompakte Kategorienflächen greifen Sand-, Salbei- und Beerentöne auf.
+Kleine statische SVG-Illustrationen geben den Kategorien Charakter. Produktzeilen bleiben einheitlich gestaltet.
 
 ## Logo und Textkarte
 
@@ -50,7 +52,11 @@ Die gelieferten Produktposts dienen weiterhin als Referenz für Farben und Marke
 
 Framer Motion animiert Drawer, aktive Desktop-Kategorie und Extras mit kurzen, sanften Übergängen.
 Der mobile Drawer gleitet ohne Federbewegung von rechts; die Abdunklung blendet separat ein.
+Die vollständig animierte Transform-Eigenschaft nutzt native Browseranimationen über Framer Motion.
+Das Panel bleibt montiert, um erneuten DOM-Aufbau beim Öffnen zu vermeiden; die Karte rendert dabei nicht erneut.
 Scrollsperre und Fokusbegrenzung bleiben bis zum Ende der Schließanimation aktiv.
+`react-remove-scroll` begrenzt Maus- und Touch-Scrollen. Die Seite bleibt im Dokumentfluss, ohne einen fixierten Body oder künstliche Scroll-Rücksetzung.
+Der Drawer verwendet dynamische Viewporthöhe und Safe-Area-Abstände. HTML und Body haben beide einen deckenden Creme-Hintergrund.
 Die Scrollbarbreite bleibt reserviert, damit die Karte beim Öffnen ihre Breite behält.
 Nach einer Kategorieauswahl scrollt die Karte erst, wenn die Navigation vollständig geschlossen ist.
 Feine Navigationstrennlinien, Bronze-Nummern und dezente Konturen verfeinern die Gestaltung.
@@ -67,5 +73,8 @@ Die Karte passt sich schmalen Displays an und vermeidet horizontales Scrollen de
 - [W3C: Target Size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum) – ausreichend große Bedienflächen.
 - [W3C: Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) und [Kontrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) – mobile Lesbarkeit.
 - [Motion: Accessibility](https://motion.dev/docs/react-accessibility) – Reduced Motion in Framer Motion berücksichtigen.
+- [Motion: Performance](https://motion.dev/docs/performance) – vollständige Transform-Eigenschaft und native Animationen.
+- [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) – Scroll-Begrenzung für Maus und Touch bei bestehendem Dokumentfluss.
+- [WebKit: Viewport Units](https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/) – dynamische Höhe bei beweglichen mobilen Browserleisten.
 
 Farben und Schriftkombination sind die gestalterische Ableitung aus den gelieferten Markenreferenzen.

@@ -1,5 +1,9 @@
 # Fotos
 
+Hinweis: Diese Dateien stammen aus der bisherigen Website. Die überarbeitete
+Speisekarte verwendet die originalen Mina-Bilder und das Logo in `public/images/`.
+Die unten dokumentierten Unsplash-Platzhalter werden nicht mehr eingebunden.
+
 Die Speisekarte nutzt vier Food-Fotos im Einstieg und in der Fotostrecke. Die eigentliche Karte bleibt bewusst typografisch und kommt ohne Illustrationen aus.
 
 Aktuell eingebundene Fotos (Platzhalter von Unsplash, Unsplash-Lizenz, frei nutzbar):

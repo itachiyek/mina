@@ -1,83 +1,32 @@
 <!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Mina Café · Menü</title>
-  <meta name="description" content="Die Speisekarte vom Mina Café Wolfsburg: Açaí Bowls, Croffel, Mini Pancakes, Matcha, Signature Lattes und mehr.">
-  <meta name="theme-color" content="#211c19">
-  <meta property="og:title" content="Mina Café · Speisekarte">
-  <meta property="og:description" content="Açaí Bowls, Croffel, Matcha und Signature Lattes – frisch in Wolfsburg.">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260911-9">
-</head>
-<body>
-  <header class="site-header" id="top">
-    <a class="wordmark" href="#top" aria-label="Mina Café Startseite">
-      <img src="images/mina-logo.png" alt="Mina Café" width="696" height="400">
-    </a>
-    <nav class="header-links" aria-label="Schnellzugriff">
-      <a class="header-menu-link" href="#menu">Menü</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="intro" aria-labelledby="page-title">
-      <div class="intro__copy">
-        <p class="overline">Wolfsburg · täglich frisch</p>
-        <h1 id="page-title">Good food.<br><em>Better mood.</em></h1>
-        <p class="intro__text">Açaí, Croffel, Matcha und Kaffee. Schnell finden, aussuchen und an der Theke bestellen.</p>
-        <a class="intro__link" href="#menu">Speisekarte ansehen <span>↓</span></a>
-      </div>
-      <figure class="intro__visual">
-        <img src="images/mina-bowl.jpg" alt="Frische Açaí Bowl mit Beeren und Granola" width="1200" height="1800">
-        <figcaption><span>Açaí Bowl</span><strong>Mina Bowl</strong><b>10,90 €</b></figcaption>
-      </figure>
-    </section>
-
-    <section class="photo-strip" aria-label="Auswahl aus unserer Karte">
-      <figure>
-        <img src="images/bueno-bowl.jpg" alt="Bueno Bowl" width="1200" height="1200" loading="lazy">
-        <figcaption><span>Açaí Bowl</span><strong>Bueno Bowl</strong><b>11,90 €</b></figcaption>
-      </figure>
-      <figure>
-        <img src="images/pistachio-dream.jpg" alt="Pistachio Dream Croffel" width="1200" height="1200" loading="lazy">
-        <figcaption><span>Croffel</span><strong>Pistachio Dream</strong><b>6,90 €</b></figcaption>
-      </figure>
-      <figure>
-        <img src="images/avo-feta.jpg" alt="Avo Feta Frühstück" width="1200" height="1200" loading="lazy">
-        <figcaption><span>Food &amp; Breakfast</span><strong>Avo Feta</strong><b>8,90 €</b></figcaption>
-      </figure>
-    </section>
-
-    <section class="menu-shell" id="menu" aria-label="Speisekarte">
-      <aside class="menu-sidebar">
-        <p class="overline">Unsere Karte</p>
-        <h2>Was darf’s sein?</h2>
-        <nav class="category-nav" id="catnav" aria-label="Menükategorien"></nav>
-      </aside>
-      <div class="menu-content" id="menu-content"></div>
-    </section>
-
-    <section class="visit">
-      <p class="overline">Mina Café · Wolfsburg</p>
-      <h2>Wir machen deinen<br><em>Liebling frisch.</em></h2>
-      <a href="https://www.instagram.com/minacafe.wob/" target="_blank" rel="noopener">@minacafe.wob ↗</a>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>Alle Preise in Euro inkl. MwSt.</p>
-    <p>Allergene und Zusatzstoffe erfährst du an der Theke.</p>
-    <a href="#top">Nach oben ↑</a>
-  </footer>
-
-  <script src="menu.js"></script>
-  <script src="app.js?v=20260911-9"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Mina Café · Speisekarte</title>
+    <meta
+      name="description"
+      content="Dein Lieblingsmoment im Mina Café Wolfsburg. Entdecke Açaí Bowls, Croffel, Frühstück, Matcha und unsere Signature Lattes."
+    />
+    <meta name="theme-color" content="#f8f5ee" />
+    <meta property="og:title" content="Mina Café · Speisekarte" />
+    <meta
+      property="og:description"
+      content="Açaí Bowls, Croffel, Matcha und Signature Lattes – frisch in Wolfsburg."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript
+      >Bitte aktiviere JavaScript, um die Speisekarte anzusehen. Unser Team
+      hilft dir auch gerne an der Theke.</noscript
+    >
+    <script type="module" src="/main.jsx"></script>
+  </body>
 </html>

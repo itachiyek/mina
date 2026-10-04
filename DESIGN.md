@@ -5,7 +5,7 @@
 Die digitale Speisekarte wird vorrangig am Tisch per QR-Code geöffnet.
 Mobile Gäste sollen sofort Speisen, Getränke, Preise und Kategorien finden.
 Die Gestaltung übersetzt die vorhandene Marke in eine ruhige, hochwertige Website.
-Die vorhandenen 44 Produkte und ihre Daten bleiben unverändert.
+Die aktuelle Karte enthält 45 Produkte. Preise, Zutaten und Reihenfolge folgen den gelieferten Speisekarten-Notizen.
 
 ## Aufbau und Navigation
 
@@ -15,22 +15,23 @@ Die vorhandenen 44 Produkte und ihre Daten bleiben unverändert.
 - Das Logo steht mittig im mobilen Kopf, der Menübutton rechts.
 - Die Karte beginnt direkt mit der ersten Kategorie; ein zusätzlicher Titel und eine zweite Kategoriezeile entfallen.
 - Die aktive Kategorie wird klar hervorgehoben und begleitet die Orientierung.
+- Karte und Navigation folgen derselben Reihenfolge: Açaí Bowls, Coffee & Tea, Mina Signatur, Matcha, Smoothies, Softdrinks, Croffel, Pancakes, Bread & Breakfast, Kuchen.
 - Produktnamen und Preise sind direkt lesbar; Beschreibungen stehen darunter.
-- Kategorie-Einleitungstexte entfallen; unter der Überschrift beginnt direkt die Produktliste.
+- Die neu vorgegebenen Kategoriebeschreibungen stehen kompakt unter der Überschrift.
 - Ergänzende Informationen und Extras werden kompakt zugänglich gemacht.
 - Großzügige Touch-Flächen und ein klarer Schließen-Button erleichtern die Bedienung.
 - Der Drawer unterstützt Tastatur, Escape, Fokusbegrenzung und Fokus-Rückgabe.
 
 ## Farben und Typografie
 
-| Rolle | Farbwert |
-| --- | --- |
-| Creme, Hauptfläche | `#f8f5ee` |
-| Helles Sand, ergänzende Fläche | `#eee7dc` |
-| Oliv, Text und Hauptakzente | `#424a32` |
-| Bronze, dekorative Details | `#9a7849` |
+| Rolle                              | Farbwert  |
+| ---------------------------------- | --------- |
+| Creme, Hauptfläche                 | `#f8f5ee` |
+| Helles Sand, ergänzende Fläche     | `#eee7dc` |
+| Oliv, Text und Hauptakzente        | `#424a32` |
+| Bronze, dekorative Details         | `#9a7849` |
 | Bronze, Text mit erhöhtem Kontrast | `#85633b` |
-| Sekundärtext | `#666a57` |
+| Sekundärtext                       | `#666a57` |
 
 Manrope prägt Kategorien, Navigationsüberschriften, Produkttexte und Preise als klare Druckschrift.
 Cormorant Garamond setzt bei den dekorativen Begrüßungstexten ruhige, markennahe Akzente.

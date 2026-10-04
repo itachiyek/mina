@@ -15,7 +15,7 @@ const categoryNotes = {
   food: "Für den großen Hunger",
   kuchen: "Ein Stück Auszeit",
   signature: "Dein neuer Lieblingskaffee",
-  matcha: "Fresh, fruity & pure",
+  matcha: "Classic, fruity & creamy",
   coffee: "Die kleinen Rituale",
   smoothies: "Frisch gemixt",
   softdrinks: "Eine kleine Erfrischung",
@@ -123,47 +123,42 @@ function CategoryNavigation({ active, onNavigate, mobile = false }) {
       className="category-navigation"
       aria-label={mobile ? "Mobile Menükategorien" : "Menükategorien"}
     >
-      {["Essen & Süßes", "Getränke"].map((group, groupIndex) => (
-        <div className="nav-group" key={group}>
-          <p className="nav-group__label">{group}</p>
-          {categories
-            .slice(groupIndex === 0 ? 0 : 5, groupIndex === 0 ? 5 : 10)
-            .map((category, index) => {
-              const current = active === category.id;
-              return (
-                <a
-                  className={`category-link ${current ? "is-active" : ""}`}
-                  href={`#${category.id}`}
-                  key={category.id}
-                  aria-current={current ? "location" : undefined}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    onNavigate(category.id);
+      <div className="nav-group">
+        {categories.map((category, index) => {
+          const current = active === category.id;
+          return (
+            <a
+              className={`category-link ${current ? "is-active" : ""}`}
+              href={`#${category.id}`}
+              key={category.id}
+              aria-current={current ? "location" : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                onNavigate(category.id);
+              }}
+            >
+              {current && (
+                <motion.span
+                  className="category-link__active"
+                  layoutId={mobile ? "mobile-category" : "desktop-category"}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 38,
                   }}
-                >
-                  {current && (
-                    <motion.span
-                      className="category-link__active"
-                      layoutId={mobile ? "mobile-category" : "desktop-category"}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 38,
-                      }}
-                    />
-                  )}
-                  <span className="category-link__number">
-                    {String(index + 1 + groupIndex * 5).padStart(2, "0")}
-                  </span>
-                  <span className="category-link__name">{category.label}</span>
-                  <span className="category-link__arrow">
-                    <Icon name="arrow" size={15} />
-                  </span>
-                </a>
-              );
-            })}
-        </div>
-      ))}
+                />
+              )}
+              <span className="category-link__number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="category-link__name">{category.label}</span>
+              <span className="category-link__arrow">
+                <Icon name="arrow" size={15} />
+              </span>
+            </a>
+          );
+        })}
+      </div>
     </nav>
   );
 }
@@ -415,27 +410,16 @@ function MenuSection({ category, index }) {
       </header>
       <div className="section-body">
         <div className="section-list">
+          {category.intro && <p className="section-intro">{category.intro}</p>}
           <div className="menu-items">
             {category.items.map((item, itemIndex) => (
               <MenuItem item={item} key={`${item.name}-${itemIndex}`} />
             ))}
           </div>
-          {category.id === "matcha" && (
-            <p className="section-footnote">
-              <Icon name="cup" size={16} />
-              Mit Milch deiner Wahl. Heiß oder auf Eis.
-            </p>
-          )}
-          {category.id === "signature" && (
-            <p className="section-footnote">
-              <Icon name="cup" size={16} />
-              Alle Signature Lattes auch auf Eis.
-            </p>
-          )}
-          {category.id === "coffee" && (
+          {category.note && (
             <p className="section-footnote">
               <Icon name="plus" size={16} />
-              {category.intro}
+              {category.note}
             </p>
           )}
         </div>

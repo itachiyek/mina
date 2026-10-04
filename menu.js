@@ -5,14 +5,14 @@ export const menu = {
       id: "bowls",
       label: "Açaí Bowls",
       title: "Açaí Bowls",
-      kicker: "Unser Signature",
+      kicker: "Our Signature",
       intro:
-        "Eiskalte Açaí-Basis, frisch püriert, mit Toppings, die knacken. Das, wofür ihr herkommt.",
+        "Cremige Açaí-Basis, kalt serviert, mit frischen Früchten und leckeren Toppings.",
       items: [
         {
           name: "Mina Bowl",
           image: "mina-bowl.jpg",
-          price: 10.9,
+          price: 9.9,
           badge: "Signature",
           tagline: "Açaí, but make it special.",
           desc: [
@@ -26,7 +26,7 @@ export const menu = {
         },
         {
           name: "Tropical Bowl",
-          price: 10.9,
+          price: 9.9,
           badge: "Sunny",
           desc: [
             "Açaí",
@@ -34,12 +34,13 @@ export const menu = {
             "Kokoschips",
             "Granola",
             "White Chocolate Drizzle",
+            "Chia-Pudding",
           ],
         },
         {
           name: "Bueno Bowl",
           image: "bueno-bowl.jpg",
-          price: 11.9,
+          price: 10.9,
           badge: "Fan Favorite",
           desc: [
             "Açaí",
@@ -52,15 +53,31 @@ export const menu = {
         },
         {
           name: "Peanut Butter Bowl",
-          price: 11.9,
+          price: 10.9,
           badge: "Protein Vibes",
           desc: ["Açaí", "Banane", "Erdbeeren", "Peanut Butter", "Granola"],
         },
       ],
       extras: [
         {
+          title: "Creams",
+          price: 1,
+          options: [
+            "Pistaziencreme",
+            "Erdnussbutter",
+            "Weiße Schokolade",
+            "Haselnusscreme",
+            "Chia-Pudding",
+          ],
+        },
+        {
+          title: "Toppings",
+          price: 0.7,
+          options: ["Granola", "Kokoschips", "Schoko-Drops", "Bueno Crunch"],
+        },
+        {
           title: "Obst",
-          price: 1.0,
+          price: 1,
           options: [
             "Banane",
             "Erdbeeren",
@@ -69,19 +86,192 @@ export const menu = {
             "Mango-Maracuja",
           ],
         },
+      ],
+    },
+    {
+      id: "coffee",
+      label: "Coffee & Tea",
+      title: "Coffee & Tea",
+      kicker: "Classics",
+      intro: "",
+      items: [
         {
-          title: "Toppings",
-          price: 0.7,
-          options: ["Granola", "Kokoschips", "Schoko-Drops"],
+          name: "Espresso",
+          price: 2.5,
+          desc: [],
         },
         {
-          title: "Creams",
-          price: 1.0,
-          options: [
-            "Pistaziencreme",
-            "Erdnussbutter",
-            "Weiße Schokolade",
-            "Haselnusscreme",
+          name: "Espresso Doppio",
+          price: 3.5,
+          desc: [],
+        },
+        {
+          name: "Americano",
+          price: 4,
+          desc: [],
+        },
+        {
+          name: "Cappuccino",
+          price: 4.3,
+          desc: [],
+        },
+        {
+          name: "Latte Macchiato",
+          price: 4.5,
+          desc: [],
+        },
+        {
+          name: "Hot Chocolate",
+          price: 4.7,
+          desc: [],
+        },
+        {
+          name: "Babyccino",
+          price: 2.2,
+          desc: ["für die Kleinen"],
+        },
+        {
+          name: "Tee",
+          price: 3.7,
+          desc: ["Schwarztee", "Grüner Tee", "Pfefferminztee", "Früchtetee"],
+        },
+      ],
+      note: "Sirup +0,50 €: Vanilla · Caramel · Salted Caramel · Hazelnut",
+    },
+    {
+      id: "signature",
+      label: "Mina Signatur",
+      title: "Mina Signatur",
+      kicker: "Hot / Iced",
+      intro: "Mina Favoriten – heiß oder auf Eis. Serviert x Cold Foam.",
+      items: [
+        {
+          name: "Spanish Latte",
+          price: 5.2,
+          badge: "Bestseller",
+          desc: [],
+        },
+        {
+          name: "White Mocha",
+          price: 5.2,
+          desc: [],
+        },
+        {
+          name: "Salted Caramel Latte",
+          price: 5.5,
+          desc: [],
+        },
+        {
+          name: "Lotus Latte",
+          price: 5.5,
+          badge: "Hype",
+          desc: [],
+        },
+        {
+          name: "Pistachio Latte",
+          price: 5.7,
+          desc: [],
+        },
+        {
+          name: "Banana Bread Latte",
+          price: 5.5,
+          desc: [],
+        },
+      ],
+    },
+    {
+      id: "matcha",
+      label: "Matcha",
+      title: "Matcha",
+      kicker: "Hot / Iced",
+      intro:
+        "Classic, fruity oder creamy. Mit Milch deiner Wahl. Heiß oder auf Eis.",
+      items: [
+        {
+          name: "Matcha Classic",
+          price: 5.2,
+          desc: [],
+        },
+        {
+          name: "Strawberry Matcha",
+          price: 5.5,
+          badge: "Hype",
+          desc: ["Erdbeerpüree"],
+        },
+        {
+          name: "Mango Matcha",
+          price: 5.5,
+          desc: ["Mangopüree"],
+        },
+        {
+          name: "Blueberry Coconut Matcha",
+          price: 5.7,
+          desc: [],
+        },
+        {
+          name: "White Chocolate Raspberry Matcha",
+          price: 5.7,
+          desc: [],
+        },
+        {
+          name: "White Chocolate Pistachio Matcha",
+          price: 5.7,
+          desc: [],
+        },
+      ],
+    },
+    {
+      id: "smoothies",
+      label: "Smoothies",
+      title: "Smoothies",
+      kicker: "Frisch gemixt",
+      intro: "Pure fruit. Easy mood.",
+      items: [
+        {
+          name: "Berry Smoothie",
+          price: 5.5,
+          desc: ["Erdbeere", "Himbeere", "Heidelbeere", "Banane", "Haferdrink"],
+        },
+        {
+          name: "Tropical",
+          price: 5.5,
+          desc: ["Mango", "Maracuja", "Banane", "Haferdrink"],
+        },
+        {
+          name: "Green Goddess",
+          price: 5.7,
+          badge: "Glow",
+          desc: ["Avocado", "Banane", "Mango", "Spinat", "Honig", "Haferdrink"],
+        },
+      ],
+    },
+    {
+      id: "softdrinks",
+      label: "Softdrinks",
+      title: "Softdrinks",
+      kicker: "Eiskalt",
+      intro: "",
+      items: [
+        {
+          name: "Wasser",
+          price: 3.2,
+          desc: ["still / sprudel · 0,25 l"],
+        },
+        {
+          name: "Fritz Kola",
+          price: 3.9,
+          desc: ["classic / zero · 0,33 l"],
+        },
+        {
+          name: "Red Bull",
+          price: 3.9,
+          desc: ["Classic / Zero · White · Heidelbeere · Kaktusfeige"],
+        },
+        {
+          name: "Eistee Elephant Bay",
+          price: 3.9,
+          desc: [
+            "Peach (classic / zero) · Watermelon · Cherry · Lemon · Granatapfel",
           ],
         },
       ],
@@ -91,8 +281,7 @@ export const menu = {
       label: "Croffel",
       title: "Croffel",
       kicker: "Croissant × Waffel",
-      intro:
-        "Außen karamellisiert-knusprig, innen buttrig-weich. Frisch aus dem Waffeleisen.",
+      intro: "Außen knusprig, innen soft. Frisch aus dem Waffeleisen.",
       items: [
         {
           name: "Pistachio Dream",
@@ -126,21 +315,15 @@ export const menu = {
     },
     {
       id: "pancakes",
-      label: "Mini Pancakes",
-      title: "Mini Pancakes",
+      label: "Pancakes",
+      title: "Pancakes",
       kicker: "10 Stück",
-      intro:
-        "Fluffige Mini-Pancakes, großzügig getoppt. Zum Teilen gedacht – wird aber selten geteilt.",
+      intro: "Fluffig, warm und großzügig getoppt.",
       items: [
         {
           name: "Berry Cloud",
           price: 6.7,
-          desc: [
-            "Erdbeeren",
-            "Heidelbeeren",
-            "weiße & Vollmilchschokolade",
-            "Puderzucker",
-          ],
+          desc: ["Erdbeeren", "Heidelbeeren", "weiße & Vollmilchschokolade"],
         },
         {
           name: "Bueno Bites",
@@ -157,10 +340,10 @@ export const menu = {
     },
     {
       id: "food",
-      label: "Food & Breakfast",
-      title: "Food & Breakfast",
+      label: "Bread & Breakfast",
+      title: "Bread & Breakfast",
       kicker: "Herzhaft",
-      intro: "Für alle, die es lieber deftig mögen.",
+      intro: "Für alle, die es lieber herzhaft mögen.",
       items: [
         {
           name: "Avo Feta",
@@ -171,12 +354,10 @@ export const menu = {
           desc: [
             "cremige Avocado",
             "Feta",
-            "Kirschtomaten",
+            "Cherrytomaten",
             "Rucola",
-            "Oliven",
             "Kürbiskerne",
             "Olivenöl",
-            "Zitrone",
           ],
         },
         {
@@ -190,6 +371,16 @@ export const menu = {
             "Rucola",
           ],
         },
+        {
+          name: "Smoked Salmon",
+          price: 10.5,
+          desc: ["Frischkäse", "Räucherlachs", "Gurke", "Sesam", "Avocado"],
+        },
+        {
+          name: "Burrata Tomato",
+          price: 9.5,
+          desc: ["Burrata", "Tomaten", "Pesto", "Rucola", "Balsamico"],
+        },
       ],
     },
     {
@@ -197,7 +388,7 @@ export const menu = {
       label: "Kuchen",
       title: "Kuchen",
       kicker: "Pro Stück",
-      intro: "Täglich frisch. Wenn's weg ist, ist es weg.",
+      intro: "",
       items: [
         {
           name: "San Sebastian Cheesecake",
@@ -207,117 +398,20 @@ export const menu = {
             "Topping nach Wahl +1,00 €: Pistachio · Lotus · White Chocolate · Hazelnut · Erdbeersauce",
           ],
         },
-        { name: "Carrot Cake", price: 4.5, desc: [] },
-        { name: "Brownie", price: 3.7, desc: [] },
+        {
+          name: "Carrot Cake",
+          price: 4.5,
+          desc: [],
+        },
+        {
+          name: "Brownie",
+          price: 3.7,
+          desc: [],
+        },
         {
           name: "Kuchen der Woche",
           price: 4.5,
           desc: ["Frag uns an der Theke"],
-        },
-      ],
-    },
-    {
-      id: "signature",
-      label: "Mina Signature",
-      title: "Mina Signature",
-      kicker: "Hot / Iced",
-      intro: "Unsere eigenen Kreationen. Heiß oder auf Eis – du entscheidest.",
-      items: [
-        { name: "Spanish Latte", price: 5.2, badge: "Bestseller", desc: [] },
-        { name: "White Mocha", price: 5.2, desc: ["x vanilla cold foam"] },
-        { name: "Salted Caramel Latte", price: 5.5, desc: [] },
-        { name: "Lotus Latte", price: 5.5, badge: "Hype", desc: [] },
-        { name: "Pistachio Latte", price: 5.7, desc: [] },
-      ],
-    },
-    {
-      id: "matcha",
-      label: "Matcha",
-      title: "Matcha",
-      kicker: "Hot / Iced",
-      intro: "Fresh, fruity & pure. Mit Milch deiner Wahl – heiß oder auf Eis.",
-      items: [
-        { name: "Matcha Classic", price: 5.2, desc: [] },
-        {
-          name: "Strawberry Matcha",
-          price: 5.5,
-          badge: "Hype",
-          desc: ["Erdbeerpüree"],
-        },
-        { name: "Mango Matcha", price: 5.5, desc: ["Mangopüree"] },
-        { name: "Blueberry Coconut Matcha", price: 5.7, desc: [] },
-        { name: "White Chocolate Raspberry Matcha", price: 5.7, desc: [] },
-        { name: "White Chocolate Pistachio Matcha", price: 5.7, desc: [] },
-      ],
-    },
-    {
-      id: "coffee",
-      label: "Coffee & Tee",
-      title: "Coffee & more",
-      kicker: "Classics",
-      intro: "Sirup +0,50 €: Vanilla · Caramel · Salted Caramel · Hazelnut",
-      items: [
-        { name: "Espresso", price: 2.5, desc: [] },
-        { name: "Espresso Doppio", price: 3.5, desc: [] },
-        { name: "Americano", price: 4.0, desc: [] },
-        { name: "Cappuccino", price: 4.3, desc: [] },
-        { name: "Latte Macchiato", price: 4.5, desc: [] },
-        { name: "Hot Chocolate", price: 4.7, desc: [] },
-        { name: "White Hot Chocolate", price: 4.8, desc: [] },
-        { name: "Babyccino", price: 2.2, desc: ["für die Kleinen"] },
-        {
-          name: "Tee",
-          price: 3.7,
-          desc: ["Schwarztee", "Grüner Tee", "Pfefferminztee", "Früchtetee"],
-        },
-      ],
-    },
-    {
-      id: "smoothies",
-      label: "Smoothies",
-      title: "Smoothies",
-      kicker: "Frisch gemixt",
-      intro: "Nur Frucht, Haferdrink und gute Laune.",
-      items: [
-        {
-          name: "Berry Smoothie",
-          price: 5.7,
-          desc: ["Erdbeere", "Himbeere", "Heidelbeere", "Banane", "Haferdrink"],
-        },
-        {
-          name: "Tropical",
-          price: 5.7,
-          desc: ["Mango", "Maracuja", "Banane", "Haferdrink"],
-        },
-        {
-          name: "Green Goddess",
-          price: 5.9,
-          badge: "Glow",
-          desc: ["Avocado", "Banane", "Mango", "Spinat", "Honig", "Haferdrink"],
-        },
-      ],
-    },
-    {
-      id: "softdrinks",
-      label: "Softdrinks",
-      title: "Softdrinks",
-      kicker: "Eiskalt",
-      intro: "",
-      items: [
-        { name: "Wasser", price: 3.2, desc: ["still / sprudel · 0,25 l"] },
-        { name: "Wasser", price: 6.9, desc: ["still / sprudel · 0,75 l"] },
-        { name: "Fritz Kola", price: 3.9, desc: ["classic / zero · 0,33 l"] },
-        {
-          name: "Red Bull",
-          price: 3.9,
-          desc: ["Classic / Zero · White · Heidelbeere · Kaktusfeige"],
-        },
-        {
-          name: "Eistee Elephant Bay",
-          price: 3.9,
-          desc: [
-            "Peach (classic / zero) · Watermelon · Cherry · Lemon · Granatapfel",
-          ],
         },
       ],
     },

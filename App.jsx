@@ -432,6 +432,12 @@ function MenuSection({ category, index }) {
               Alle Signature Lattes auch auf Eis.
             </p>
           )}
+          {category.id === "coffee" && (
+            <p className="section-footnote">
+              <Icon name="plus" size={16} />
+              {category.intro}
+            </p>
+          )}
         </div>
       </div>
       {category.extras && <Extras groups={category.extras} id={category.id} />}

@@ -1,5 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useIsPresent,
+  useReducedMotion,
+} from "framer-motion";
 import { menu } from "./menu.js";
 
 const categories = menu.categories;
@@ -137,10 +142,11 @@ function CategoryNavigation({ active, onNavigate, mobile = false }) {
                 onNavigate(category.id);
               }}
             >
-              {current && (
+              {current && mobile && <span className="category-link__active" />}
+              {current && !mobile && (
                 <motion.span
                   className="category-link__active"
-                  layoutId={mobile ? "mobile-category" : "desktop-category"}
+                  layoutId="desktop-category"
                   transition={{
                     type: "spring",
                     stiffness: 400,
@@ -196,24 +202,29 @@ function Sidebar({ active, onNavigate }) {
   );
 }
 
-function MobileDrawer({
-  open,
-  onClose,
-  active,
-  onNavigate,
-  returnFocusRef,
-  backgroundRef,
-}) {
+function DrawerPanel({ onClose, active, onNavigate, backgroundRef }) {
   const dialogRef = useRef(null);
   const reduceMotion = useReducedMotion();
-  useEffect(() => {
-    if (!open) return;
+  const isPresent = useIsPresent();
+  useLayoutEffect(() => {
     const background = backgroundRef.current;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const body = document.body;
+    const scrollY = window.scrollY;
+    const styleKeys = ["position", "top", "left", "right", "overflow"];
+    const previousStyles = Object.fromEntries(
+      styleKeys.map((key) => [key, body.style[key]]),
+    );
+    // Keep the page still on touch devices, including iOS, for the entire exit.
+    Object.assign(body.style, {
+      position: "fixed",
+      top: `-${scrollY}px`,
+      left: "0",
+      right: "0",
+      overflow: "hidden",
+    });
     if (background) background.inert = true;
     const dialog = dialogRef.current;
-    dialog?.querySelector("button")?.focus();
+    dialog?.querySelector("button")?.focus({ preventScroll: true });
     const handleKey = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
@@ -227,10 +238,10 @@ function MobileDrawer({
       const last = focusable[focusable.length - 1];
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
-        last.focus();
+        last.focus({ preventScroll: true });
       } else if (!event.shiftKey && document.activeElement === last) {
         event.preventDefault();
-        first.focus();
+        first.focus({ preventScroll: true });
       }
     };
     const handleResize = () => {
@@ -239,81 +250,92 @@ function MobileDrawer({
     document.addEventListener("keydown", handleKey);
     window.addEventListener("resize", handleResize);
     return () => {
-      document.body.style.overflow = previousOverflow;
+      Object.assign(body.style, previousStyles);
       if (background) background.inert = false;
       document.removeEventListener("keydown", handleKey);
       window.removeEventListener("resize", handleResize);
-      returnFocusRef.current?.focus({ preventScroll: true });
+      window.scrollTo({ top: scrollY, behavior: "instant" });
     };
-  }, [open, onClose, returnFocusRef, backgroundRef]);
+  }, [onClose, backgroundRef]);
 
   return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          className="drawer-layer"
-          key="navigation-drawer"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <div
-            className="drawer-backdrop"
-            aria-hidden="true"
+    <motion.div
+      className="drawer-layer"
+      data-state={isPresent ? "open" : "closing"}
+    >
+      <motion.div
+        className="drawer-backdrop"
+        aria-hidden="true"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: reduceMotion ? 0 : 0.22 }}
+      />
+      <motion.div
+        id="mobile-navigation"
+        className="drawer"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="drawer-title"
+        initial={{ x: reduceMotion ? 0 : "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: reduceMotion ? 0 : "100%" }}
+        transition={{
+          type: "tween",
+          duration: reduceMotion ? 0 : 0.3,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        <div className="drawer__top">
+          <Logo onTop={() => onNavigate("top")} />
+          <motion.button
+            type="button"
+            className="icon-button"
+            aria-label="Navigation schließen"
             onClick={onClose}
-          />
-          <motion.div
-            id="mobile-navigation"
-            className="drawer"
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="drawer-title"
-            initial={{ x: reduceMotion ? 0 : "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: reduceMotion ? 0 : "100%" }}
-            transition={{ type: "spring", stiffness: 340, damping: 36 }}
+            whileTap={{ scale: 0.92 }}
           >
-            <div className="drawer__top">
-              <Logo onTop={() => onNavigate("top")} />
-              <motion.button
-                type="button"
-                className="icon-button"
-                aria-label="Navigation schließen"
-                onClick={onClose}
-                whileTap={{ scale: 0.92 }}
-              >
-                <Icon name="close" />
-              </motion.button>
-            </div>
-            <p className="drawer__eyebrow">Mina Café · Wolfsburg</p>
-            <h2 id="drawer-title">Was darf’s sein?</h2>
-            <CategoryNavigation
-              active={active}
-              onNavigate={onNavigate}
-              mobile
-            />
-            <div className="drawer__bottom">
-              <p>
-                Such dir deinen Lieblingsmoment aus.
-                <br />
-                Wir freuen uns auf deine Bestellung an der Theke.
-              </p>
-              <a
-                className="social-link"
-                href={instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon name="instagram" size={17} />
-                @minacafe.wob
-                <Icon name="external" size={13} />
-              </a>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
+            <Icon name="close" />
+          </motion.button>
+        </div>
+        <p className="drawer__eyebrow">Mina Café · Wolfsburg</p>
+        <h2 id="drawer-title">Was darf’s sein?</h2>
+        <CategoryNavigation active={active} onNavigate={onNavigate} mobile />
+        <div className="drawer__bottom">
+          <p>
+            Such dir deinen Lieblingsmoment aus.
+            <br />
+            Wir freuen uns auf deine Bestellung an der Theke.
+          </p>
+          <a
+            className="social-link"
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="instagram" size={17} />
+            @minacafe.wob
+            <Icon name="external" size={13} />
+          </a>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function MobileDrawer({ open, onAfterClose, ...props }) {
+  const closeFrame = useRef(0);
+  useEffect(() => () => cancelAnimationFrame(closeFrame.current), []);
+  return (
+    <AnimatePresence
+      onExitComplete={() => {
+        // The next frame follows React's unmount and scroll-lock cleanup.
+        closeFrame.current = requestAnimationFrame(onAfterClose);
+      }}
+    >
+      {open && <DrawerPanel key="navigation-drawer" {...props} />}
     </AnimatePresence>
   );
 }
@@ -434,17 +456,20 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const backgroundRef = useRef(null);
+  const drawerPresent = useRef(false);
+  const pendingNavigation = useRef(null);
   const navigationLock = useRef({ id: "", until: 0 });
   const reduceMotion = useReducedMotion();
   const closeDrawer = React.useCallback(() => setDrawerOpen(false), []);
 
   function openDrawer(event) {
+    if (drawerPresent.current) return;
     menuButtonRef.current = event.currentTarget;
+    drawerPresent.current = true;
     setDrawerOpen(true);
   }
 
-  function navigate(id) {
-    closeDrawer();
+  function scrollToCategory(id) {
     const target = document.getElementById(id);
     if (!target) return;
     const isCategory = categories.some((category) => category.id === id);
@@ -453,7 +478,8 @@ export default function App() {
       until: performance.now() + (reduceMotion ? 0 : 1200),
     };
     setActive(isCategory ? id : categories[0].id);
-    history.pushState(null, "", `#${id}`);
+    if (window.location.hash !== `#${id}`)
+      history.pushState(null, "", `#${id}`);
     requestAnimationFrame(() =>
       requestAnimationFrame(() => {
         target.scrollIntoView({
@@ -467,10 +493,35 @@ export default function App() {
     );
   }
 
+  function navigate(id) {
+    if (drawerPresent.current) {
+      pendingNavigation.current = id;
+      setDrawerOpen(false);
+      return;
+    }
+    scrollToCategory(id);
+  }
+
+  function finishClosing() {
+    drawerPresent.current = false;
+    const id = pendingNavigation.current;
+    pendingNavigation.current = null;
+    if (id) {
+      scrollToCategory(id);
+    } else {
+      const opener =
+        window.innerWidth <= 1000
+          ? menuButtonRef.current
+          : backgroundRef.current?.querySelector(".sidebar [aria-current]");
+      opener?.focus({ preventScroll: true });
+    }
+  }
+
   useEffect(() => {
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (drawerPresent.current) return;
       const marker =
         window.innerWidth <= 600 ? 90 : window.innerWidth <= 1000 ? 96 : 130;
       const lock = navigationLock.current;
@@ -505,6 +556,11 @@ export default function App() {
       const id = window.location.hash.slice(1);
       const target = document.getElementById(id);
       if (target) {
+        if (drawerPresent.current) {
+          pendingNavigation.current = id;
+          setDrawerOpen(false);
+          return;
+        }
         const isCategory = categories.some((category) => category.id === id);
         navigationLock.current = {
           id: isCategory ? id : "",
@@ -608,9 +664,9 @@ export default function App() {
       <MobileDrawer
         open={drawerOpen}
         onClose={closeDrawer}
+        onAfterClose={finishClosing}
         active={active}
         onNavigate={navigate}
-        returnFocusRef={menuButtonRef}
         backgroundRef={backgroundRef}
       />
     </>

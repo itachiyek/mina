@@ -12,7 +12,7 @@ Die aktuelle Karte enthält 45 Produkte. Preise, Zutaten und Reihenfolge folgen 
 - Desktop: feste rechte Sidebar mit Logo, Kategorien und ergänzenden Informationen.
 - Mobile: von rechts öffnender Drawer mit vollständiger Navigation, passend zum Kategorienbutton rechts.
 - Ein runder Menübutton im festen mobilen Kopf hält die Navigation beim Scrollen erreichbar.
-- Das Logo steht mittig im mobilen Kopf, der Menübutton rechts.
+- Das Logo steht links im mobilen Kopf, der Menübutton rechts.
 - Die Karte beginnt direkt mit der ersten Kategorie; ein zusätzlicher Titel und eine zweite Kategoriezeile entfallen.
 - Die aktive Kategorie wird klar hervorgehoben und begleitet die Orientierung.
 - Karte und Navigation folgen derselben Reihenfolge: Açaí Bowls, Coffee & Tea, Mina Signatur, Matcha, Smoothies, Softdrinks, Croffel, Pancakes, Bread & Breakfast, Kuchen.
@@ -48,7 +48,12 @@ Die gelieferten Produktposts dienen weiterhin als Referenz für Farben und Marke
 
 ## Bewegung und Zugänglichkeit
 
-Framer Motion animiert Drawer, aktive Kategorie und Extras mit kurzen, sanften Übergängen.
+Framer Motion animiert Drawer, aktive Desktop-Kategorie und Extras mit kurzen, sanften Übergängen.
+Der mobile Drawer gleitet ohne Federbewegung von rechts; die Abdunklung blendet separat ein.
+Scrollsperre und Fokusbegrenzung bleiben bis zum Ende der Schließanimation aktiv.
+Die Scrollbarbreite bleibt reserviert, damit die Karte beim Öffnen ihre Breite behält.
+Nach einer Kategorieauswahl scrollt die Karte erst, wenn die Navigation vollständig geschlossen ist.
+Feine Navigationstrennlinien, Bronze-Nummern und dezente Konturen verfeinern die Gestaltung.
 Bewegung unterstützt Orientierung und Rückmeldung, ohne den Zugriff auf Inhalte zu verzögern.
 Die Systemeinstellung Reduced Motion wird respektiert; große Bewegungen werden reduziert.
 Die Karte passt sich schmalen Displays an und vermeidet horizontales Scrollen der Inhalte.

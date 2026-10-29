@@ -386,14 +386,7 @@ function MenuItem({ item, reduceMotion }) {
       transition={reduceMotion ? revealInstant : revealTransition}
     >
       <div className="menu-item__copy">
-        <div className="menu-item__heading">
-          <h3>{item.name}</h3>
-          {item.badge && (
-            <span className="item-badge">
-              {item.badge === "Hype" ? "Mina Favorite" : item.badge}
-            </span>
-          )}
-        </div>
+        <h3>{item.name}</h3>
         {!!item.desc?.length && <p>{item.desc.join(" · ")}</p>}
       </div>
       {item.price != null && (

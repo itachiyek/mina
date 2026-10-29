@@ -454,12 +454,6 @@ h2:focus {
   min-width: 0;
   flex: 1;
 }
-.menu-item__heading {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
 .menu-item h3 {
   font-size: 15px;
   font-weight: 600;
@@ -480,17 +474,6 @@ h2:focus {
   line-height: 1.65;
   font-variant-numeric: tabular-nums;
   color: var(--olive);
-}
-.item-badge {
-  padding: 3px 6px;
-  border: 1px solid #ded7c3;
-  border-radius: 20px;
-  background: #f0ebdc;
-  color: #596047;
-  font-size: 8px;
-  letter-spacing: 0.15px;
-  font-weight: 500;
-  white-space: nowrap;
 }
 .section-footnote {
   display: flex;
@@ -766,7 +749,7 @@ h2:focus {
     border-color: #c6cbb2;
   }
   .drawer__eyebrow {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 1.7px;
     text-transform: uppercase;
     color: var(--bronze);
@@ -782,8 +765,11 @@ h2:focus {
   }
   .drawer .category-link {
     min-height: 46px;
-    font-size: 13px;
+    font-size: 15px;
     padding: 0 13px;
+  }
+  .drawer .category-link__number {
+    font-size: 10px;
   }
   .drawer__bottom {
     margin-top: 24px;
@@ -791,15 +777,46 @@ h2:focus {
     border-top: 1px solid var(--line);
   }
   .drawer__bottom > p {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
     line-height: 1.8;
     margin-bottom: 18px;
   }
   .drawer__bottom .social-link {
-    font-size: 11px;
+    font-size: 13px;
+  }
+  .section-heading .eyebrow,
+  .section-heading__note,
+  .extras__label,
+  .visit > .eyebrow {
+    font-size: 10px;
+  }
+  .section-intro,
+  .section-pricing {
+    font-size: 14px;
+  }
+  .section-pricing__label {
+    font-size: 12px;
+  }
+  .section-pricing__option strong {
+    font-size: 13px;
+  }
+  .menu-item h3,
+  .menu-item__price,
+  .extras__item,
+  .extras__item > span:last-child {
+    font-size: 16px;
+  }
+  .menu-item__copy > p {
+    font-size: 14px;
+  }
+  .section-footnote,
+  .visit > p:not(.eyebrow),
+  .visit > a {
+    font-size: 13px;
   }
   .footer {
+    font-size: 12px;
     padding-bottom: max(30px, env(safe-area-inset-bottom));
   }
 }
@@ -836,11 +853,10 @@ h2:focus {
   .section-number {
     width: 24px;
     height: 24px;
-    font-size: 9px;
+    font-size: 10px;
     padding: 0;
   }
   .section-heading .eyebrow {
-    font-size: 7px;
     letter-spacing: 1.25px;
     margin-bottom: 3px;
   }
@@ -859,23 +875,9 @@ h2:focus {
     padding: 17px 0;
     gap: 16px;
   }
-  .menu-item h3 {
-    font-size: 14px;
-  }
-  .menu-item__price {
-    font-size: 13px;
-  }
   .menu-item__copy > p {
-    font-size: 12px;
     line-height: 1.75;
     margin-top: 7px;
-  }
-  .menu-item__heading {
-    gap: 6px;
-  }
-  .item-badge {
-    font-size: 8px;
-    padding: 3px 6px;
   }
   .visit {
     margin-top: 24px;
@@ -885,11 +887,7 @@ h2:focus {
   .visit h2 {
     font-size: 49px;
   }
-  .visit > p:not(.eyebrow) {
-    font-size: 10px;
-  }
   .footer {
-    font-size: 8px;
     gap: 10px;
   }
   .footer > div {

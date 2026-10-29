@@ -34,6 +34,7 @@ Die aktuelle Karte enthält 45 Produkte. Preise, Zutaten und Reihenfolge folgen 
 | Sekundärtext                       | `#666a57` |
 
 Manrope prägt Kategorien, Navigationsüberschriften, Produkttexte und Preise als klare Druckschrift.
+Auf Mobilgeräten stehen Produktnamen und Preise in 16 px, Zutaten und Kategoriebeschreibungen in 14 px; zusätzliche Preis- und Allergenhinweise sind ebenfalls vergrößert.
 Cormorant Garamond setzt bei den dekorativen Begrüßungstexten ruhige, markennahe Akzente.
 Die Fonts werden lokal gehostet; klare Hierarchien vermeiden unnötige Schriftvarianten.
 Bronze bleibt ein zurückhaltender Akzent; funktionale Texte benötigen genügend Kontrast.

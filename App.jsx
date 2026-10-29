@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { RemoveScroll } from "react-remove-scroll";
 import { menu } from "./menu.js";
 import MenuArt from "./MenuArt.jsx";
@@ -403,50 +403,16 @@ function MenuItem({ item, reduceMotion }) {
   );
 }
 
-function Extras({ groups, id }) {
-  const [expanded, setExpanded] = useState(false);
+function Extras({ groups }) {
   return (
-    <div className={`extras ${expanded ? "is-expanded" : ""}`}>
-      <motion.button
-        type="button"
-        className="extras__trigger"
-        onClick={() => setExpanded(!expanded)}
-        aria-expanded={expanded}
-        aria-controls={expanded ? `${id}-extras` : undefined}
-        whileTap={{ scale: 0.995 }}
-      >
-        <span>
-          <Icon name="plus" size={17} />
-          Mach’s zu deiner Bowl
-        </span>
-        <span className="extras__hint">Extras & Toppings</span>
-        <motion.span animate={{ rotate: expanded ? 180 : 0 }}>
-          <Icon name="down" size={18} />
-        </motion.span>
-      </motion.button>
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            id={`${id}-extras`}
-            className="extras__body"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-          >
-            <div>
-              {groups.map((group) => (
-                <article className="extra-row" key={group.title}>
-                  <div>
-                    <h4>{group.title}</h4>
-                    <p>{group.options.join(" · ")}</p>
-                  </div>
-                  <span>+ {money.format(group.price)}</span>
-                </article>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="extras" aria-label="Extra Topping">
+      <p className="extras__label">Extra Topping</p>
+      {groups.map((group) => (
+        <div className="extras__item" key={group.title}>
+          <span>{group.options.join(" · ")}</span>
+          <span>+ {money.format(group.price)}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -517,7 +483,7 @@ const MenuSection = React.memo(function MenuSection({ category, index }) {
           )}
         </div>
       </div>
-      {category.extras && <Extras groups={category.extras} id={category.id} />}
+      {category.extras && <Extras groups={category.extras} />}
     </section>
   );
 });

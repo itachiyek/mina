@@ -50,7 +50,7 @@ Die gelieferten Produktposts dienen weiterhin als Referenz für Farben und Marke
 
 ## Bewegung und Zugänglichkeit
 
-Framer Motion animiert Drawer, aktive Desktop-Kategorie und Extras mit kurzen, sanften Übergängen.
+Framer Motion animiert Drawer und aktive Desktop-Kategorie mit kurzen, sanften Übergängen. Das Bowl-Extra Chiapudding wird direkt mit seinem Preis angezeigt.
 Kategorienflächen und Produktzeilen blenden beim ersten Eintritt in den sichtbaren Bereich sanft ein. Die kurze Bewegung nutzt nur Opazität und vollständige Transform-Werte; die Sektionen selbst bleiben für Navigation und Scrollposition unverändert. Bei reduzierter Bewegung erscheinen die Inhalte sofort.
 Der mobile Drawer gleitet ohne Federbewegung von rechts; die Abdunklung blendet separat ein.
 Die vollständig animierte Transform-Eigenschaft nutzt native Browseranimationen über Framer Motion.

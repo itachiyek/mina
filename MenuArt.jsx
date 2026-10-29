@@ -88,6 +88,16 @@ const drawings = {
       <path d="M24 82h48" />
     </>
   ),
+  breakfast: (
+    <>
+      <ellipse cx="48" cy="57" rx="31" ry="24" fill="var(--art-fill)" />
+      <ellipse cx="48" cy="57" rx="24" ry="17" />
+      <circle cx="39" cy="55" r="8" fill="var(--art-halo)" />
+      <circle cx="39" cy="55" r="3" fill="var(--art-fill)" />
+      <path d="M53 47c7 1 10 7 8 13-6 3-13 0-14-5 0-4 2-6 6-8Zm-4 8 9-3M31 70h35" />
+      <path d="M26 27c-2-4 3-8 7-6m-3 10 5-4M63 23c4-4 9-2 10 2m-12 5 7-2" />
+    </>
+  ),
   kuchen: (
     <>
       <path d="m24 48 43-21 9 40-39 15-13-8Z" fill="var(--art-fill)" />

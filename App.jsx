@@ -25,6 +25,7 @@ const categoryNotes = {
   croffel: "Knusprig & warm",
   pancakes: "Kleine Glücklichmacher",
   food: "Für den großen Hunger",
+  breakfast: "Platte & Getränk",
   kuchen: "Ein Stück Auszeit",
   signature: "Dein neuer Lieblingskaffee",
   matcha: "Classic, fruity & creamy",
@@ -395,7 +396,9 @@ function MenuItem({ item, reduceMotion }) {
         </div>
         {!!item.desc?.length && <p>{item.desc.join(" · ")}</p>}
       </div>
-      <span className="menu-item__price">{money.format(item.price)}</span>
+      {item.price != null && (
+        <span className="menu-item__price">{money.format(item.price)}</span>
+      )}
     </motion.article>
   );
 }
@@ -482,6 +485,18 @@ const MenuSection = React.memo(function MenuSection({ category, index }) {
           <MenuArt category={category.id} />
         </div>
         {category.intro && <p className="section-intro">{category.intro}</p>}
+        {!!category.pricing?.length && (
+          <div className="section-pricing" aria-label="Preise">
+            {category.pricingLabel && (
+              <span className="section-pricing__label">{category.pricingLabel}</span>
+            )}
+            {category.pricing.map(({ label, price }) => (
+              <span className="section-pricing__option" key={label}>
+                <strong>{label}</strong> <span>{money.format(price)}</span>
+              </span>
+            ))}
+          </div>
+        )}
       </motion.header>
       <div className="section-body">
         <div className="section-list">

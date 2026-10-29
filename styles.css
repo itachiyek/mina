@@ -308,6 +308,11 @@ h2:focus {
   --section-edge: #d1d7bc;
   --art-fill: #c6d1a4;
 }
+#breakfast {
+  --section-tint: #eee9dc;
+  --section-edge: #dcd4c1;
+  --art-fill: #dfcfad;
+}
 #kuchen {
   --section-tint: #ede4df;
   --section-edge: #ddcec5;
@@ -402,6 +407,38 @@ h2:focus {
   font-weight: 500;
   line-height: 1.75;
   margin: 0;
+}
+.section-pricing {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.section-pricing__label {
+  margin-right: 3px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.section-pricing__option {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  max-width: 100%;
+  padding: 5px 10px;
+  border: 1px solid var(--section-edge);
+  border-radius: 20px;
+  background: rgb(248 245 238 / 65%);
+  font-variant-numeric: tabular-nums;
+}
+.section-pricing__option > span {
+  white-space: nowrap;
+}
+.section-pricing__option strong {
+  font-size: 10px;
+  color: var(--bronze);
 }
 .menu-item {
   display: flex;

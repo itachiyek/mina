@@ -15,7 +15,7 @@ Die aktuelle Karte enthält 45 Produkte. Preise, Zutaten und Reihenfolge folgen 
 - Das Logo steht links im mobilen Kopf, der Menübutton rechts.
 - Die Karte beginnt direkt mit der ersten Kategorie; ein zusätzlicher Titel und eine zweite Kategoriezeile entfallen.
 - Die aktive Kategorie wird klar hervorgehoben und begleitet die Orientierung.
-- Karte und Navigation folgen derselben Reihenfolge: Açaí Bowls, Coffee & Tea, Mina Signatur, Matcha, Smoothies, Softdrinks, Croffel, Pancakes, Bread & Breakfast, Kuchen.
+- Karte und Navigation folgen der Reihenfolge der aktualisierten Speisekarte: Coffee & more, Mina Signatur, Matcha, Softdrinks, Smoothies, Açaí Bowls, Croffel, Bread & Breakfast, Breakfast Special, Kuchen.
 - Produktnamen und Preise sind direkt lesbar; Beschreibungen stehen darunter.
 - Kategorienüberschrift, Illustration und Beschreibung bilden eine gemeinsame getönte Fläche. Die Beschreibung steht kompakt direkt unter der Titelzeile.
 - Ergänzende Informationen und Extras werden kompakt zugänglich gemacht.
